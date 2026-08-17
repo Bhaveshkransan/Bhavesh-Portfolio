@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Bhavesh Gangurde | Full-Stack Developer & AI Automation Enthusiast</title>
+  <meta name="title" content="Bhavesh Gangurde | Full-Stack Developer & AI Automation Enthusiast">
+  <meta name="description" content="Portfolio of Bhavesh Bajirao Gangurde — Computer Engineering student at Terna Engineering College. Full-Stack MERN developer, AI workflow automation builder, and C++ DSA practitioner.">
+  <meta name="keywords" content="Bhavesh Gangurde, Full-Stack Developer, MERN Stack, React, Node.js, AI Automation, RPA, Generative AI, Agentic Workflows, Terna Engineering College, Portfolio">
+  <meta name="author" content="Bhavesh Bajirao Gangurde">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bhavesh Gangurde | Full-Stack Developer">
+  <meta property="og:description" content="Full-Stack MERN Developer, AI Automation Builder & Computer Engineering Student from Terna College.">
+  <meta property="og:url" content="https://pranavkokate.vercel.app/connect">
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(220 20% 6%)',
+            foreground: 'hsl(210 20% 95%)',
+            card: 'hsl(220 18% 10%)',
+            border: 'hsl(220 15% 18%)',
+            primary: {
+              DEFAULT: 'hsl(185 70% 50%)',
+              foreground: 'hsl(220 20% 6%)',
+            },
+            secondary: 'hsl(220 15% 15%)',
+            muted: {
+              DEFAULT: 'hsl(220 15% 18%)',
+              foreground: 'hsl(215 15% 62%)',
+            }
+          },
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Three.js 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-background text-foreground antialiased font-body relative min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary">
+
+  
+  <!-- Ambient Glow Orbs -->
+  <div class="ambient-glow top-20 left-10 w-96 h-96 bg-cyan-500/10"></div>
+  <div class="ambient-glow top-1/2 right-10 w-[500px] h-[500px] bg-blue-600/10"></div>
+  <div class="ambient-glow bottom-20 left-1/3 w-[600px] h-[600px] bg-teal-500/10"></div>
+
+  <!-- =========================================================================
+       FIXED GLASS NAVBAR
+       ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 navbar-blur">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        
+        <!-- Brand Logo -->
+        <a href="#/" class="text-xl font-bold font-heading group flex items-center gap-2">
+          <span class="gradient-text text-2xl font-extrabold tracking-tight">Bhavesh</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">DEV</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1 font-body">
+          <a href="#/" class="nav-item active" data-route="/">Home</a>
+          <a href="#/about" class="nav-item" data-route="/about">About</a>
+          <a href="#/skills" class="nav-item" data-route="/skills">Skills</a>
+          <a href="#/projects" class="nav-item" data-route="/projects">Projects</a>
+          <a href="#/github" class="nav-item" data-route="/github">GitHub</a>
+          <a href="#/competitive" class="nav-item" data-route="/competitive">CP &amp; DSA</a>
+          <a href="#/connect" class="nav-item" data-route="/connect">Connect</a>
+        </nav>
+
+        <!-- Right Quick Actions -->
+        <div class="hidden lg:flex items-center gap-3">
+          <button onclick="openResumeModal()" class="btn-outline !py-1.5 !px-3.5 !text-xs font-mono">
+            <span>Resume</span>
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+          </button>
+          <a href="#/connect" class="btn-primary !py-1.5 !px-4 !text-xs">
+            <span>Hire Me</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-foreground hover:bg-secondary rounded-lg transition-colors" aria-label="Toggle Menu">
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 border-t border-border mt-3 space-y-1">
+        <a href="#/" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-primary" data-route="/">Home</a>
+        <a href="#/about" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-muted-foreground" data-route="/about">About</a>
+        <a href="#/skills" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-muted-foreground" data-route="/skills">Skills</a>
+        <a href="#/projects" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-muted-foreground" data-route="/projects">Projects</a>
+        <a href="#/github" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-muted-foreground" data-route="/github">GitHub</a>
+        <a href="#/competitive" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-muted-foreground" data-route="/competitive">CP &amp; DSA</a>
+        <a href="#/connect" class="block px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-secondary text-muted-foreground" data-route="/connect">Connect</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="flex-1 pt-24 pb-16 relative z-10">
+
+    <!-- =======================================================================
+         PAGE 1: HOME (HERO & OVERVIEW)
+         ======================================================================= -->
+    <section id="page-home" class="page-section active relative overflow-hidden">
+      <!-- 3D Neural Spider-Web Canvas (Home Page Only) -->
+      <div id="three-hero-container" class="absolute inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        
+        <!-- Hero Section -->
+        <div class="max-w-4xl mx-auto text-center pt-8 pb-16 space-y-8 relative">
+          <div class="hero-readability-shield"></div>
+          
+          <!-- Avatar with Glowing Neon Ring -->
+          <div class="avatar-glow-ring mx-auto">
+            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-teal-500 to-blue-600 shadow-2xl flex items-center justify-center">
+              <div class="w-full h-full rounded-full bg-card overflow-hidden flex items-center justify-center text-4xl font-extrabold text-primary font-heading border-2 border-background">
+                BG
+              </div>
+            </div>
+          </div>
+
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/80 border border-primary/30 text-xs font-mono text-primary shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Open for Remote Software Engineering &amp; AI Internships</span>
+          </div>
+
+          <!-- Main Hero Headings -->
+          <div class="space-y-3">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading">
+              Hi, I'm <span class="gradient-text-hero">Bhavesh Gangurde</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto">
+              Full-Stack Developer &amp; AI Automation Enthusiast
+            </p>
+          </div>
+
+          <!-- Bio Pitch -->
+          <p class="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Computer Engineering student at <strong class="text-foreground">Terna Engineering College</strong> (8.12 CGPA). I build scalable full-stack web applications with <strong class="text-primary">React &amp; Node.js</strong>, engineer agentic workflows with <strong class="text-primary">Generative AI &amp; RPA</strong>, and solve Data Structures in C++.
+          </p>
+
+          <!-- Hero Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a href="#/projects" class="btn-primary">
+              <span>Explore Projects</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#/connect" class="btn-outline">
+              <span>Let's Connect</span>
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+            <button onclick="openResumeModal()" class="btn-secondary">
+              <span>Inspect Resume</span>
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Key Metrics Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-10 max-w-3xl mx-auto text-left">
+            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
+              <div class="text-xs font-mono text-muted-foreground uppercase">ACADEMIC STANDING</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-foreground font-mono mt-1">8.12 <span class="text-xs text-primary font-normal">CGPA</span></div>
+              <div class="text-[11px] text-muted-foreground mt-0.5">Terna Engg (Sem 4)</div>
+            </div>
+
+            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
+              <div class="text-xs font-mono text-muted-foreground uppercase">NXTWAVE TRACK</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-orange-400 font-mono mt-1">180 <span class="text-xs text-orange-300 font-normal">Days</span></div>
+              <div class="text-[11px] text-muted-foreground mt-0.5">Consistency Streak 🔥</div>
+            </div>
+
+            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
+              <div class="text-xs font-mono text-muted-foreground uppercase">LEETCODE DSA</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-teal-400 font-mono mt-1">40+ <span class="text-xs text-teal-300 font-normal">Solved</span></div>
+              <div class="text-[11px] text-muted-foreground mt-0.5">C++ Problem Solving</div>
+            </div>
+
+            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
+              <div class="text-xs font-mono text-muted-foreground uppercase">CREDENTIALS</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono mt-1">12 <span class="text-xs text-cyan-300 font-normal">Verified</span></div>
+              <div class="text-[11px] text-muted-foreground mt-0.5">Oracle, SIH &amp; AI</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Featured Projects Preview on Home -->
+        <div class="max-w-5xl mx-auto pt-8">
+          <div class="flex items-center justify-between mb-8 pb-3 border-b border-border">
+            <div>
+              <h2 class="text-2xl font-bold font-heading">Featured Highlights</h2>
+              <p class="text-sm text-muted-foreground">Hand-picked full-stack and AI workflow projects</p>
+            </div>
+            <a href="#/projects" class="text-xs font-mono text-primary hover:underline flex items-center gap-1">
+              <span>View All (7)</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div id="home-featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Populated via js/app.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         PAGE 2: ABOUT ME
+         ======================================================================= -->
+    <section id="page-about" class="page-section">
+      <div class="container mx-auto px-6">
+        
+        <div class="section-header-wrap">
+          <h1 class="section-title">About <span class="gradient-text">Me</span></h1>
+          <p class="section-subtitle">Full-stack engineer with a passion for building scalable web apps, real-time architectures, and automated AI systems.</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8">
+          
+          <!-- Bio Overview Card -->
+          <div class="card-gradient stagger-card rounded-2xl p-8 border border-border space-y-4">
+            <div class="flex items-center gap-3 text-primary">
+              <i data-lucide="user" class="w-6 h-6"></i>
+              <h2 class="text-xl font-bold text-foreground font-heading">Engineering Focus &amp; Philosophy</h2>
+            </div>
+            <p class="text-muted-foreground leading-relaxed">
+              I'm a Computer Engineering student at Terna Engineering College, Nerul (University of Mumbai). My technical focus is split between full-stack web applications using the MERN stack and intelligent agentic workflows powered by Generative AI and Robotic Process Automation (RPA). I enjoy architecting end-to-end solutions that solve real problems, optimizing databases, and deploying reliable production backends.
+            </p>
+            <p class="text-muted-foreground leading-relaxed">
+              Currently, I am strengthening my core computer science foundations in Data Structures and Algorithms with C++, while actively seeking remote internship opportunities to contribute to high-impact production codebases.
+            </p>
+          </div>
+
+          <!-- Education Card -->
+          <div class="card-gradient stagger-card rounded-2xl p-8 border border-border space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3 text-cyan-400">
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                <h2 class="text-xl font-bold text-foreground font-heading">Education</h2>
+              </div>
+              <span class="badge-chip text-primary border-primary/30">2023 – 2027</span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-bold text-foreground font-heading">Bachelor of Engineering in Computer Engineering</h3>
+              <p class="text-sm text-cyan-300 font-medium">Terna Engineering College, Nerul • University of Mumbai</p>
+              <div class="flex items-center gap-3 text-xs font-mono pt-1 text-muted-foreground">
+                <span>Academic Score: <strong class="text-foreground">8.12 CGPA</strong> (Up to Semester 4)</span>
+                <span>•</span>
+                <span>Status: <strong class="text-emerald-400">Active Student</strong></span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-border">
+              <div class="text-xs font-mono uppercase text-muted-foreground mb-2">Relevant Core Coursework</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge-chip">DBMS &amp; SQL</span>
+                <span class="badge-chip">Computer Networks</span>
+                <span class="badge-chip">Operating Systems</span>
+                <span class="badge-chip">Object-Oriented Programming (OOP)</span>
+                <span class="badge-chip">Data Structures &amp; Algorithms</span>
+                <span class="badge-chip">Web Computing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campus Leadership & Hackathons Card -->
+          <div class="card-gradient stagger-card rounded-2xl p-8 border border-border space-y-6">
+            <div class="flex items-center gap-3 text-purple-400">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+              <h2 class="text-xl font-bold text-foreground font-heading">Campus Leadership &amp; Hackathons</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-5 rounded-xl bg-secondary/50 border border-border space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-primary font-bold">HACKATHON</span>
+                  <span class="text-xs font-mono text-muted-foreground">SIH</span>
+                </div>
+                <h4 class="font-bold text-foreground text-sm font-heading">Smart India Hackathon</h4>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  <strong>KolamSense</strong> (Rangoli Pattern Recognition) project selected for college evaluation round.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-xl bg-secondary/50 border border-border space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-orange-400 font-bold">LEADERSHIP</span>
+                  <span class="text-xs font-mono text-muted-foreground">T&amp;P</span>
+                </div>
+                <h4 class="font-bold text-foreground text-sm font-heading">Training &amp; Placement</h4>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  Student Coordinator. Hosted <strong>2 major college events</strong>, coordinating corporate guests.
+                </p>
+              </div>
+
+              <div class="p-5 rounded-xl bg-secondary/50 border border-border space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-purple-400 font-bold">ORATORY</span>
+                  <span class="text-xs font-mono text-muted-foreground">CSI</span>
+                </div>
+                <h4 class="font-bold text-foreground text-sm font-heading">Computer Society of India</h4>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  Technical oratory competitions, event supervision, volunteering, and student coordination.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         PAGE 3: SKILLS
+         ======================================================================= -->
+    <section id="page-skills" class="page-section">
+      <div class="container mx-auto px-6">
+        
+        <div class="section-header-wrap">
+          <h1 class="section-title">Technical <span class="gradient-text">Skills</span></h1>
+          <p class="section-subtitle">Technologies, frameworks, databases, and AI tooling I use to build robust software.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Category 1: Languages -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Programming Languages</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">C++ (DSA)</span>
+              <span class="badge-chip">Python</span>
+              <span class="badge-chip">JavaScript (ES6+)</span>
+              <span class="badge-chip">TypeScript</span>
+              <span class="badge-chip">SQL</span>
+              <span class="badge-chip">HTML5 / CSS3</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Frontend -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Frontend Development</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">React.js</span>
+              <span class="badge-chip">React Router</span>
+              <span class="badge-chip">Redux Toolkit</span>
+              <span class="badge-chip">Tailwind CSS</span>
+              <span class="badge-chip">Vite</span>
+              <span class="badge-chip">Bootstrap</span>
+              <span class="badge-chip">Responsive Design</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Backend & APIs -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Backend &amp; APIs</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">Node.js</span>
+              <span class="badge-chip">Express.js</span>
+              <span class="badge-chip">RESTful APIs</span>
+              <span class="badge-chip">WebSockets</span>
+              <span class="badge-chip">Socket.IO</span>
+              <span class="badge-chip">JWT Authentication</span>
+              <span class="badge-chip">API Integrations</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Databases -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Databases &amp; Storage</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">MongoDB</span>
+              <span class="badge-chip">MongoDB Atlas</span>
+              <span class="badge-chip">MySQL</span>
+              <span class="badge-chip">SQLite</span>
+              <span class="badge-chip">Redis</span>
+              <span class="badge-chip">Cloudinary CDN</span>
+            </div>
+          </div>
+
+          <!-- Category 5: AI & Automation -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">AI &amp; Automation</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">Generative AI</span>
+              <span class="badge-chip">Prompt Engineering</span>
+              <span class="badge-chip">Agentic Workflows</span>
+              <span class="badge-chip">Robotic Process Automation (RPA)</span>
+              <span class="badge-chip">OpenAI / Gemini APIs</span>
+              <span class="badge-chip">Agentic Workflows</span>
+            </div>
+          </div>
+
+          <!-- Category 6: Core Computer Science -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-rose-400 to-red-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Core Computer Science</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">Data Structures</span>
+              <span class="badge-chip">Algorithms</span>
+              <span class="badge-chip">DBMS &amp; SQL</span>
+              <span class="badge-chip">Operating Systems</span>
+              <span class="badge-chip">Computer Networks</span>
+              <span class="badge-chip">Object-Oriented Programming</span>
+            </div>
+          </div>
+
+          <!-- Category 7: DevOps & Tools -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Tools &amp; Platforms</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">Git</span>
+              <span class="badge-chip">GitHub</span>
+              <span class="badge-chip">Docker</span>
+              <span class="badge-chip">Postman</span>
+              <span class="badge-chip">VS Code</span>
+              <span class="badge-chip">Linux / WSL</span>
+              <span class="badge-chip">Vercel &amp; Render</span>
+            </div>
+          </div>
+
+          <!-- Category 8: Currently Learning -->
+          <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-pulse"></span>
+              <h3 class="text-lg font-bold text-primary font-heading">Currently Strengthening</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-chip">Advanced C++ DSA</span>
+              <span class="badge-chip">System Design Basics</span>
+              <span class="badge-chip">Scalable Microservices</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         PAGE 4: PROJECTS
+         ======================================================================= -->
+    <section id="page-projects" class="page-section">
+      <div class="container mx-auto px-6">
+        
+        <div class="section-header-wrap">
+          <h1 class="section-title">Featured <span class="gradient-text">Projects</span></h1>
+          <p class="section-subtitle">A showcase of full-stack MERN applications, real-time messaging, and practical AI workflow automation.</p>
+        </div>
+
+        <!-- Filter Pill Switcher -->
+        <div class="flex justify-center flex-wrap gap-2 mb-10 max-w-xl mx-auto p-1.5 rounded-full bg-secondary/80 border border-border font-body">
+          <button class="filter-btn active" data-filter="all">All (7)</button>
+          <button class="filter-btn" data-filter="mern">Full-Stack MERN</button>
+          <button class="filter-btn" data-filter="ai">AI &amp; Automation</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated dynamically via js/app.js -->
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         PAGE 5: GITHUB PROFILE & REPOSITORIES
+         ======================================================================= -->
+    <section id="page-github" class="page-section">
+      <div class="container mx-auto px-6">
+        
+        <div class="section-header-wrap">
+          <h1 class="section-title">GitHub <span class="gradient-text">Profile</span></h1>
+          <p class="section-subtitle">Open-source contributions, repositories, and continuous coding activity.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto space-y-8">
+          
+          <!-- GitHub Profile Banner Card -->
+          <div class="card-gradient stagger-card rounded-2xl p-8 border border-border flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-5">
+              <div class="w-20 h-20 rounded-full bg-secondary border border-border flex items-center justify-center text-3xl font-mono text-primary font-bold">
+                gh
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold text-foreground font-heading">Bhavesh Bajirao Gangurde</h2>
+                <a href="https://github.com/Bhaveshkransan" target="_blank" class="text-primary font-mono text-sm hover:underline flex items-center gap-1 mt-0.5">
+                  <span>@Bhaveshkransan</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <p class="text-xs text-muted-foreground mt-2">Computer Engineering Student | Full-Stack MERN &amp; AI Automation Developer</p>
+              </div>
+            </div>
+
+            <a href="https://github.com/Bhaveshkransan" target="_blank" class="btn-primary whitespace-nowrap">
+              <span>View GitHub Profile</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- Pinned Repositories Grid -->
+          <div>
+            <h3 class="text-xl font-bold text-foreground mb-4 flex items-center gap-2 font-heading">
+              <i data-lucide="folder-git-2" class="w-5 h-5 text-primary"></i>
+              <span>Pinned Repositories</span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border flex flex-col justify-between space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-mono text-emerald-400 font-bold">MERN STACK</span>
+                    <span class="text-xs font-mono text-muted-foreground">Public</span>
+                  </div>
+                  <h4 class="text-lg font-bold text-foreground font-heading">ShopNest-Ecommerce-MERN</h4>
+                  <p class="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Full-stack e-commerce application with JWT Auth, Razorpay payments, admin dashboard, and Cloudinary media.
+                  </p>
+                </div>
+                <div class="pt-4 border-t border-border flex items-center justify-between">
+                  <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://github.com/Bhaveshkransan/ShopNest-Ecommerce-MERN" target="_blank" class="btn-secondary !py-1 !px-3 !text-xs font-mono">
+                    <span>Code</span>
+                    <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border flex flex-col justify-between space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-mono text-cyan-400 font-bold">REAL-TIME</span>
+                    <span class="text-xs font-mono text-muted-foreground">Public</span>
+                  </div>
+                  <h4 class="text-lg font-bold text-foreground font-heading">socialhub-ai</h4>
+                  <p class="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Full-stack social platform with instant messaging via Socket.IO, image/video uploads, explore feed, and dark mode.
+                  </p>
+                </div>
+                <div class="pt-4 border-t border-border flex items-center justify-between">
+                  <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                    <span>React / Vite</span>
+                  </div>
+                  <a href="https://github.com/Bhaveshkransan/socialhub-ai" target="_blank" class="btn-secondary !py-1 !px-3 !text-xs font-mono">
+                    <span>Code</span>
+                    <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border flex flex-col justify-between space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-mono text-purple-400 font-bold">AI WORKFLOW</span>
+                    <span class="text-xs font-mono text-muted-foreground">Public</span>
+                  </div>
+                  <h4 class="text-lg font-bold text-foreground font-heading">AI-Response-Automation-System</h4>
+                  <p class="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Automated multi-platform response generation across Instagram, LinkedIn, and Facebook using Robotic Process Automation (RPA), Generative AI, and Agentic Workflows.
+                  </p>
+                </div>
+                <div class="pt-4 border-t border-border flex items-center justify-between">
+                  <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                    <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+                    <span>Python / Gen-AI / RPA</span>
+                  </div>
+                  <a href="https://github.com/Bhaveshkransan/AI-Response-Automation-System" target="_blank" class="btn-secondary !py-1 !px-3 !text-xs font-mono">
+                    <span>Code</span>
+                    <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border flex flex-col justify-between space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-mono text-blue-400 font-bold">HACKATHON</span>
+                    <span class="text-xs font-mono text-muted-foreground">Public</span>
+                  </div>
+                  <h4 class="text-lg font-bold text-foreground font-heading">KolamSense-SIH</h4>
+                  <p class="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Smart India Hackathon project for traditional Rangoli pattern recognition and cultural computer vision analysis.
+                  </p>
+                </div>
+                <div class="pt-4 border-t border-border flex items-center justify-between">
+                  <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                    <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+                    <span>Python / OpenCV</span>
+                  </div>
+                  <a href="https://github.com/Bhaveshkransan/KolamSense" target="_blank" class="btn-secondary !py-1 !px-3 !text-xs font-mono">
+                    <span>Code</span>
+                    <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         PAGE 6: COMPETITIVE PROGRAMMING & DSA
+         ======================================================================= -->
+    <section id="page-competitive" class="page-section">
+      <div class="container mx-auto px-6">
+        
+        <div class="section-header-wrap">
+          <h1 class="section-title">Competitive <span class="gradient-text">Programming</span></h1>
+          <p class="section-subtitle">Data structures, algorithmic problem solving in C++, and engineering competitions.</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- LeetCode Card -->
+          <div class="card-gradient stagger-card rounded-2xl border border-border overflow-hidden flex flex-col justify-between">
+            <div class="h-2 bg-gradient-to-r from-amber-500 to-orange-500"></div>
+            <div class="p-6 space-y-4">
+              <div class="flex items-start justify-between">
+                <div class="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white font-bold font-mono">
+                  LC
+                </div>
+                <i data-lucide="external-link" class="w-5 h-5 text-muted-foreground"></i>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold text-foreground font-heading">LeetCode</h3>
+                <p class="text-primary font-mono text-sm">@kransan</p>
+              </div>
+
+              <p class="text-xs text-muted-foreground leading-relaxed">
+                Practicing Data Structures &amp; Algorithms in C++. Actively solving problems in Arrays, Two Pointers, Hashing, Binary Search, and Binary Trees.
+              </p>
+
+              <div class="p-4 rounded-xl bg-secondary/60 border border-border flex items-center justify-between">
+                <div>
+                  <div class="text-[11px] font-mono text-muted-foreground uppercase">Problems Solved</div>
+                  <div class="text-2xl font-extrabold text-foreground font-mono">40+</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-[11px] font-mono text-muted-foreground uppercase">Primary Language</div>
+                  <div class="text-sm font-bold text-amber-400 font-mono">C++ (STL)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 pt-0">
+              <a href="https://leetcode.com/u/kransan" target="_blank" class="w-full btn-outline flex items-center justify-center gap-2">
+                <span>View LeetCode Profile</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hackathons & Contests Card -->
+          <div class="card-gradient stagger-card rounded-2xl border border-border overflow-hidden flex flex-col justify-between">
+            <div class="h-2 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+            <div class="p-6 space-y-4">
+              <div class="flex items-start justify-between">
+                <div class="p-3 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white font-bold font-mono">
+                  🏆
+                </div>
+                <i data-lucide="external-link" class="w-5 h-5 text-muted-foreground"></i>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold text-foreground font-heading">Hackathons &amp; Challenges</h3>
+                <p class="text-primary font-mono text-sm">Devpost &amp; SIH</p>
+              </div>
+
+              <p class="text-xs text-muted-foreground leading-relaxed">
+                Participated in national level hackathons and engineering contests. Built algorithmic prototypes under tight deadlines.
+              </p>
+
+              <div class="p-4 rounded-xl bg-secondary/60 border border-border space-y-2 text-xs">
+                <div class="flex justify-between items-center">
+                  <span class="text-muted-foreground font-mono">Smart India Hackathon:</span>
+                  <span class="font-bold text-cyan-300 font-mono">KolamSense Project</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-muted-foreground font-mono">Devpost Hackathons:</span>
+                  <span class="font-bold text-foreground font-mono">AI Prototype Tracks</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6 pt-0">
+              <a href="https://devpost.com/bhaveshg1357?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank" class="w-full btn-outline flex items-center justify-center gap-2">
+                <span>View Devpost Profile</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         PAGE 7: CONNECT / CONTACT (WITH ALL 5 PLATFORM CARDS + EMAIL)
+         ======================================================================= -->
+    <section id="page-connect" class="page-section">
+      <div class="container mx-auto px-6">
+        
+        <div class="section-header-wrap">
+          <h1 class="section-title">Let's <span class="gradient-text">Connect</span></h1>
+          <p class="section-subtitle">I'm always open to discussing new internship opportunities, collaborations, or having a chat about tech.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto space-y-12">
+          
+          <!-- 5 Platform Social Cards + Email Card Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            
+            <!-- 1. LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/bhavesh-gangurde-70a02a372" target="_blank" class="card-gradient stagger-card rounded-2xl p-6 border border-border block group h-full transition-all">
+              <div class="p-3 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 text-white w-fit mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="linkedin" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">LinkedIn</h3>
+              <p class="text-xs text-muted-foreground mt-1">Connect with me professionally</p>
+              <p class="text-xs font-mono text-primary mt-3 flex items-center gap-1">
+                <span>@Bhavesh Gangurde</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </p>
+            </a>
+
+            <!-- 2. GitHub Card -->
+            <a href="https://github.com/Bhaveshkransan" target="_blank" class="card-gradient stagger-card rounded-2xl p-6 border border-border block group h-full transition-all">
+              <div class="p-3 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 text-white w-fit mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="github" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">GitHub</h3>
+              <p class="text-xs text-muted-foreground mt-1">Check out my code &amp; repositories</p>
+              <p class="text-xs font-mono text-primary mt-3 flex items-center gap-1">
+                <span>@Bhaveshkransan</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </p>
+            </a>
+
+            <!-- 3. X (Twitter) Card -->
+            <a href="https://x.com/Bhaveshkransan" target="_blank" class="card-gradient stagger-card rounded-2xl p-6 border border-border block group h-full transition-all">
+              <div class="p-3 rounded-xl bg-gradient-to-br from-zinc-700 to-zinc-900 text-white w-fit mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="twitter" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">X (Twitter)</h3>
+              <p class="text-xs text-muted-foreground mt-1">Tech updates, AI &amp; dev posts</p>
+              <p class="text-xs font-mono text-primary mt-3 flex items-center gap-1">
+                <span>@Bhaveshkransan</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </p>
+            </a>
+
+            <!-- 4. YouTube Card -->
+            <a href="https://www.youtube.com/@Bhavkransan" target="_blank" class="card-gradient stagger-card rounded-2xl p-6 border border-border block group h-full transition-all">
+              <div class="p-3 rounded-xl bg-gradient-to-br from-red-600 to-red-800 text-white w-fit mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="youtube" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">YouTube</h3>
+              <p class="text-xs text-muted-foreground mt-1">MERN project builds &amp; tutorials</p>
+              <p class="text-xs font-mono text-primary mt-3 flex items-center gap-1">
+                <span>@Bhavkransan</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </p>
+            </a>
+
+            <!-- 5. Devpost Card -->
+            <a href="https://devpost.com/bhaveshg1357?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank" class="card-gradient stagger-card rounded-2xl p-6 border border-border block group h-full transition-all">
+              <div class="p-3 rounded-xl bg-gradient-to-br from-cyan-600 to-teal-700 text-white w-fit mb-4 group-hover:scale-110 transition-transform">
+                <i data-lucide="code" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">Devpost</h3>
+              <p class="text-xs text-muted-foreground mt-1">Hackathon projects &amp; submissions</p>
+              <p class="text-xs font-mono text-primary mt-3 flex items-center gap-1">
+                <span>@bhaveshg1357</span>
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+              </p>
+            </a>
+
+            <!-- 6. Direct Email Card -->
+            <div class="card-gradient stagger-card rounded-2xl p-6 border border-border flex flex-col justify-between group h-full">
+              <div>
+                <div class="p-3 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600 text-white w-fit mb-4 group-hover:scale-110 transition-transform">
+                  <i data-lucide="mail" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-foreground font-heading">Direct Email</h3>
+                <p class="text-xs text-muted-foreground mt-1">Drop me a message anytime</p>
+                <p class="text-xs font-mono text-primary mt-3 break-all">bhaveshg1357@gmail.com</p>
+              </div>
+              <div class="flex items-center gap-2 pt-4 mt-2 border-t border-border">
+                <a href="mailto:bhaveshg1357@gmail.com" class="btn-secondary !py-1 !px-3 !text-xs font-mono">
+                  <span>Mail ↗</span>
+                </a>
+                <button onclick="copyToClipboard('bhaveshg1357@gmail.com', 'Email copied to clipboard!')" class="btn-secondary !py-1 !px-3 !text-xs font-mono">
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Grid: Contact Form & Info -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Contact Message Form -->
+            <div class="lg:col-span-7 card-gradient stagger-card rounded-2xl p-8 border border-border space-y-5">
+              <div class="flex items-center gap-3 text-primary">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                <h2 class="text-xl font-bold text-foreground font-heading">Send a Direct Message</h2>
+              </div>
+              
+              <form onsubmit="handleContactFormSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label class="block text-xs font-mono text-muted-foreground">Your Name</label>
+                    <input type="text" id="form-name" required placeholder="e.g. Alex Smith" class="form-input">
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="block text-xs font-mono text-muted-foreground">Your Email</label>
+                    <input type="email" id="form-email" required placeholder="alex@company.com" class="form-input">
+                  </div>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-mono text-muted-foreground">Subject</label>
+                  <input type="text" id="form-subject" required placeholder="Remote Software Engineering Internship" class="form-input">
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-mono text-muted-foreground">Message</label>
+                  <textarea id="form-message" rows="4" required placeholder="Hi Bhavesh, I came across your portfolio and would like to discuss..." class="form-input resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full btn-primary !py-3 flex items-center justify-center gap-2">
+                  <span>Send Message</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Quick Information & Contact Details -->
+            <div class="lg:col-span-5 space-y-4">
+              
+              <!-- Location Card -->
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-2">
+                <div class="flex items-center gap-3 text-cyan-400">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                  <h3 class="font-bold text-foreground text-sm font-heading">Location</h3>
+                </div>
+                <p class="text-xs text-muted-foreground">Navi Mumbai / Thane, Maharashtra, India</p>
+                <p class="text-[11px] font-mono text-emerald-400">Timezone: IST (UTC +5:30)</p>
+              </div>
+
+              <!-- Phone Card -->
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3 text-emerald-400">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    <h3 class="font-bold text-foreground text-sm font-heading">Phone Number</h3>
+                  </div>
+                  <button onclick="copyToClipboard('+919653605492', 'Phone number copied!')" class="text-xs font-mono text-primary hover:underline">
+                    Copy
+                  </button>
+                </div>
+                <a href="tel:+919653605492" class="text-sm font-mono text-foreground font-semibold hover:text-primary transition-colors block">
+                  +91 9653605492
+                </a>
+              </div>
+
+              <!-- Resume Card -->
+              <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-3">
+                <div class="flex items-center gap-3 text-purple-400">
+                  <i data-lucide="file-check" class="w-5 h-5"></i>
+                  <h3 class="font-bold text-foreground text-sm font-heading">Official Resume</h3>
+                </div>
+                <p class="text-xs text-muted-foreground">Download official ATS-optimized Full-Stack &amp; AI Engineering resume.</p>
+                <button onclick="openResumeModal()" class="w-full btn-outline !py-2 !text-xs font-mono flex items-center justify-center gap-2">
+                  <span>Inspect &amp; Download PDF</span>
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="border-t border-border bg-card/40 backdrop-blur-md py-10 relative z-10 font-body">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        
+        <div>
+          <a href="#/" class="text-lg font-bold font-heading gradient-text">Bhavesh Gangurde</a>
+          <p class="text-xs text-muted-foreground mt-1">Computer Engineering Student • Full-Stack Developer</p>
+        </div>
+
+        <!-- Social Links in Footer -->
+        <div class="flex items-center gap-4 text-muted-foreground">
+          <a href="https://www.linkedin.com/in/bhavesh-gangurde-70a02a372" target="_blank" class="hover:text-primary transition-colors" title="LinkedIn">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a href="https://github.com/Bhaveshkransan" target="_blank" class="hover:text-primary transition-colors" title="GitHub">
+            <i data-lucide="github" class="w-5 h-5"></i>
+          </a>
+          <a href="https://leetcode.com/u/kransan" target="_blank" class="hover:text-primary transition-colors" title="LeetCode">
+            <span class="font-mono text-sm font-bold">LC</span>
+          </a>
+          <a href="https://x.com/Bhaveshkransan" target="_blank" class="hover:text-primary transition-colors" title="Twitter / X">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
+          </a>
+          <a href="https://www.youtube.com/@Bhavkransan" target="_blank" class="hover:text-primary transition-colors" title="YouTube">
+            <i data-lucide="youtube" class="w-5 h-5"></i>
+          </a>
+          <a href="https://devpost.com/bhaveshg1357?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank" class="hover:text-primary transition-colors" title="Devpost">
+            <i data-lucide="code" class="w-5 h-5"></i>
+          </a>
+          <a href="mailto:bhaveshg1357@gmail.com" class="hover:text-primary transition-colors" title="Email">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+        </div>
+
+        <div class="text-xs text-muted-foreground font-mono">
+          © <span id="current-year">2026</span> Bhavesh Gangurde. All rights reserved.
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       PROJECT DETAILS MODAL
+       ========================================================================= -->
+  <div id="project-modal" class="modal-overlay">
+    <div class="modal-content p-6 sm:p-8 space-y-6">
+      <div class="flex items-start justify-between gap-4 border-b border-border pb-4">
+        <div>
+          <span id="modal-project-badge" class="badge-chip text-primary border-primary/30 mb-2"></span>
+          <h2 id="modal-project-title" class="text-2xl font-bold font-heading text-foreground"></h2>
+          <p id="modal-project-tagline" class="text-xs font-mono text-muted-foreground mt-1"></p>
+        </div>
+        <button onclick="closeProjectModal()" class="p-2 rounded-lg bg-secondary hover:bg-muted text-muted-foreground hover:text-foreground transition-colors" aria-label="Close Modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm text-muted-foreground leading-relaxed">
+        <p id="modal-project-desc"></p>
+        
+        <div class="pt-2">
+          <div class="text-xs font-mono uppercase text-foreground font-bold mb-2">Core Engineering Highlights:</div>
+          <ul id="modal-project-highlights" class="space-y-1.5 list-disc list-inside text-xs font-sans text-muted-foreground"></ul>
+        </div>
+
+        <div class="pt-2">
+          <div class="text-xs font-mono uppercase text-foreground font-bold mb-2">Technologies Used:</div>
+          <div id="modal-project-tech" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
+        <button onclick="closeProjectModal()" class="btn-secondary !text-xs">Close</button>
+        <div class="flex items-center gap-3">
+          <a id="modal-project-live" href="#" target="_blank" class="btn-primary !text-xs hidden">
+            <span>Live Demo ↗</span>
+          </a>
+          <a id="modal-project-github" href="#" target="_blank" class="btn-outline !text-xs font-mono">
+            <span>View Source Code →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       RESUME VIEWER MODAL
+       ========================================================================= -->
+  <div id="resume-modal" class="modal-overlay">
+    <div class="modal-content p-6 sm:p-8 space-y-6 max-w-4xl">
+      <div class="flex items-center justify-between border-b border-border pb-4">
+        <div>
+          <h2 class="text-xl font-bold font-heading text-foreground">Bhavesh Bajirao Gangurde — Resume</h2>
+          <p class="text-xs font-mono text-muted-foreground">B.E. Computer Engineering • Full-Stack MERN &amp; AI Developer</p>
+        </div>
+        <button onclick="closeResumeModal()" class="p-2 rounded-lg bg-secondary hover:bg-muted text-muted-foreground hover:text-foreground transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Embedded PDF Preview -->
+      <div class="w-full h-[68vh] bg-secondary/40 rounded-xl overflow-hidden border border-border relative">
+        <object data="assets/Bhavesh-Gangurde-Resume.pdf" type="application/pdf" class="w-full h-full">
+          <iframe src="assets/Bhavesh-Gangurde-Resume.pdf" class="w-full h-full border-0">
+            <p class="p-6 text-center text-xs text-muted-foreground">Your browser does not support embedded PDFs. Please use the download or open in new tab button below.</p>
+          </iframe>
+        </object>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <button onclick="closeResumeModal()" class="btn-secondary !text-xs">Close</button>
+        <div class="flex items-center gap-3">
+          <a href="assets/Bhavesh-Gangurde-Resume.pdf" target="_blank" class="btn-outline !text-xs font-mono flex items-center gap-1.5">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span>Open in New Tab ↗</span>
+          </a>
+          <a href="assets/Bhavesh-Gangurde-Resume.pdf" download="Bhavesh-Gangurde-Resume.pdf" class="btn-primary !text-xs font-mono flex items-center gap-1.5">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Download PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       TOAST CONTAINER
+       ========================================================================= -->
+  <div id="toast-container"></div>
+
+
+  <!-- Portfolio Datasets -->
+  <script src="js/projectsData.js"></script>
+
+  <!-- Three.js Hero Script -->
+  <script src="js/threeHero.js"></script>
+
+  <!-- Main Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
