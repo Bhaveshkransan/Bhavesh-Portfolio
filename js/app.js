@@ -1,6 +1,6 @@
 /**
  * Bhavesh Gangurde — Portfolio Application Engine
- * Cinematic 3D Spatial Interactions, Neural Web Integration & Card Physics
+ * Cinematic 3D Spatial Interactions, Routing, Projects & Certificates Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initRouter();
   renderFeaturedProjects();
   renderProjects('all');
+  renderCertificates('all');
   initFilterButtons();
+  initCertFilterButtons();
   initMobileMenu();
   init3DCardTiltPhysics();
   setCurrentYear();
@@ -45,11 +47,9 @@ function init3DCardTiltPhysics() {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        // Set CSS custom properties for radial gradient highlight
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
 
-        // Calculate 3D tilt angles (max +/- 5 degrees for sleek subtlety)
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         const rotateX = ((y - centerY) / centerY) * -4.5;
@@ -70,7 +70,6 @@ function init3DCardTiltPhysics() {
   }
 
   attachTiltToCards();
-  // Re-attach whenever project grid re-renders
   window.attachTiltToCards = attachTiltToCards;
 }
 
@@ -83,6 +82,7 @@ function initRouter() {
     '/about': 'page-about',
     '/skills': 'page-skills',
     '/projects': 'page-projects',
+    '/certificates': 'page-certificates',
     '/github': 'page-github',
     '/competitive': 'page-competitive',
     '/connect': 'page-connect'
@@ -103,12 +103,10 @@ function initRouter() {
 
     const activeSection = document.getElementById(targetPageId);
     if (activeSection) {
-      // Re-trigger 3D Spatial Animation
       activeSection.classList.remove('active');
       void activeSection.offsetWidth; // DOM Reflow
       activeSection.classList.add('active');
 
-      // Stagger 3D entry for cards
       const cards = activeSection.querySelectorAll('.stagger-card');
       cards.forEach((card, idx) => {
         card.style.animation = 'none';
@@ -117,7 +115,6 @@ function initRouter() {
         card.style.animationDelay = `${(idx * 0.065) + 0.05}s`;
       });
 
-      // Animate Section Header
       const header = activeSection.querySelector('.section-header-wrap');
       if (header) {
         header.style.animation = 'none';
@@ -126,8 +123,6 @@ function initRouter() {
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Re-attach 3D Tilt
       if (window.attachTiltToCards) window.attachTiltToCards();
     }
 
@@ -243,7 +238,6 @@ function renderProjects(filter = 'all') {
   if (window.attachTiltToCards) window.attachTiltToCards();
 }
 
-// Render Top 3 Featured Projects on Home Page
 function renderFeaturedProjects() {
   const homeGrid = document.getElementById('home-featured-grid');
   if (!homeGrid || typeof projectsData === 'undefined') return;
@@ -305,16 +299,127 @@ function renderFeaturedProjects() {
   if (window.attachTiltToCards) window.attachTiltToCards();
 }
 
-// Project Filter Buttons
 function initFilterButtons() {
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  document.querySelectorAll('.filter-btn:not(.cert-filter-btn)').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filter-btn:not(.cert-filter-btn)').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
       renderProjects(filter);
     });
   });
+}
+
+/* ==========================================================================
+   CERTIFICATES RENDERING & FILTERING
+   ========================================================================== */
+function renderCertificates(filter = 'all') {
+  const grid = document.getElementById('certificates-grid');
+  if (!grid || typeof certificatesData === 'undefined') return;
+
+  const filtered = filter === 'all'
+    ? certificatesData
+    : certificatesData.filter(c => c.category === filter);
+
+  grid.innerHTML = '';
+
+  filtered.forEach((c, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card-gradient stagger-card rounded-2xl border border-border overflow-hidden flex flex-col justify-between group';
+    card.style.animation = `staggerCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both`;
+    card.style.animationDelay = `${(idx * 0.06) + 0.04}s`;
+
+    card.innerHTML = `
+      <div>
+        <div class="h-2 bg-gradient-to-r from-teal-400 via-cyan-500 to-indigo-600"></div>
+        <div class="p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="badge-chip text-primary border-primary/30">${c.badge}</span>
+            <span class="text-[11px] font-mono text-muted-foreground uppercase">${c.fileType.toUpperCase()}</span>
+          </div>
+
+          <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">
+            ${c.title}
+          </h3>
+
+          <p class="text-xs text-cyan-400 font-mono font-medium">
+            ${c.issuer}
+          </p>
+
+          <p class="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+            ${c.description}
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            ${c.skills.slice(0, 3).map(s => `<span class="badge-chip !text-[10px] !py-0.5 !px-2">${s}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 pt-0 border-t border-border/60 flex items-center justify-between gap-3 mt-4">
+        <button onclick="openCertificateModal('${c.id}')" class="btn-primary !text-xs !py-1.5 !px-3 font-mono flex items-center gap-1.5 w-full justify-center">
+          <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+          <span>Inspect Credential ↗</span>
+        </button>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  initLucideIcons();
+  if (window.attachTiltToCards) window.attachTiltToCards();
+}
+
+function initCertFilterButtons() {
+  document.querySelectorAll('.cert-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cert-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      renderCertificates(filter);
+    });
+  });
+}
+
+function openCertificateModal(certId) {
+  if (typeof certificatesData === 'undefined') return;
+  const c = certificatesData.find(item => item.id === certId);
+  if (!c) return;
+
+  const modal = document.getElementById('certificate-modal');
+  document.getElementById('modal-cert-badge').textContent = c.badge;
+  document.getElementById('modal-cert-title').textContent = c.title;
+  document.getElementById('modal-cert-issuer').textContent = c.issuer;
+  document.getElementById('modal-cert-desc').textContent = c.description;
+
+  const skillsEl = document.getElementById('modal-cert-skills');
+  skillsEl.innerHTML = (c.skills || []).map(s => `<span class="badge-chip">${s}</span>`).join('');
+
+  // Preview Box
+  const previewBox = document.getElementById('modal-cert-preview-box');
+  if (c.fileType === 'image') {
+    previewBox.innerHTML = `<img src="${c.localFile}" alt="${c.title}" class="w-full h-full object-contain p-2 rounded-lg" />`;
+  } else {
+    previewBox.innerHTML = `
+      <object data="${c.localFile}" type="application/pdf" class="w-full h-full">
+        <iframe src="${c.localFile}" class="w-full h-full border-0">
+          <p class="p-6 text-center text-xs text-muted-foreground">Preview not supported in this browser. Please use the download or open button below.</p>
+        </iframe>
+      </object>
+    `;
+  }
+
+  document.getElementById('modal-cert-open').href = c.localFile;
+  document.getElementById('modal-cert-download').href = c.localFile;
+
+  modal.classList.add('active');
+  initLucideIcons();
+}
+
+function closeCertificateModal() {
+  const modal = document.getElementById('certificate-modal');
+  if (modal) modal.classList.remove('active');
 }
 
 /* ==========================================================================
@@ -360,8 +465,10 @@ function closeProjectModal() {
 window.addEventListener('click', (e) => {
   const projModal = document.getElementById('project-modal');
   const resumeModal = document.getElementById('resume-modal');
+  const certModal = document.getElementById('certificate-modal');
   if (e.target === projModal) closeProjectModal();
   if (e.target === resumeModal) closeResumeModal();
+  if (e.target === certModal) closeCertificateModal();
 });
 
 /* ==========================================================================
