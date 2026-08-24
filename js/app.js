@@ -1,19 +1,17 @@
 /**
- * Bhavesh Gangurde — Portfolio Application Engine
- * Cinematic 3D Spatial Interactions, Routing, Projects & Certificates Engine
+ * Bhavesh Gangurde — Portfolio Engine (moncy.dev style)
+ * Smooth Continuous Scrolling, Interactive 3D Physics, Modals & Render Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initLucideIcons();
-  initCustomCursor();
-  initRouter();
-  renderFeaturedProjects();
   renderProjects('all');
   renderCertificates('all');
   initFilterButtons();
   initCertFilterButtons();
-  initMobileMenu();
+  initCustomCursor();
   init3DCardTiltPhysics();
+  initScrollSpy();
   setCurrentYear();
 });
 
@@ -31,14 +29,67 @@ function setCurrentYear() {
 }
 
 /* ==========================================================================
-   3D CARD HOVER TILT PHYSICS & DYNAMIC LIGHTING HIGHLIGHTS
+   CUSTOM MAGNETIC CURSOR (moncy.dev style)
+   ========================================================================== */
+function initCustomCursor() {
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouch) {
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    return;
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+  });
+
+  function renderCursor() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(renderCursor);
+  }
+  requestAnimationFrame(renderCursor);
+
+  function attachCursorHover() {
+    const hoverables = document.querySelectorAll('a, button, input, textarea, .card-gradient, .what-i-do-card, .marquee-pill');
+    hoverables.forEach(el => {
+      if (el.dataset.cursorAttached) return;
+      el.dataset.cursorAttached = 'true';
+
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('active-hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('active-hover');
+      });
+    });
+  }
+
+  attachCursorHover();
+  window.attachCursorHover = attachCursorHover;
+}
+
+/* ==========================================================================
+   3D CARD HOVER TILT WITH SPOTLIGHT HIGHLIGHTS
    ========================================================================== */
 function init3DCardTiltPhysics() {
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   if (isTouch) return;
 
   function attachTiltToCards() {
-    const cards = document.querySelectorAll('.card-gradient');
+    const cards = document.querySelectorAll('.card-gradient, .what-i-do-card');
     cards.forEach(card => {
       if (card.dataset.tiltInitialized) return;
       card.dataset.tiltInitialized = 'true';
@@ -53,10 +104,10 @@ function init3DCardTiltPhysics() {
 
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -4.5;
-        const rotateY = ((x - centerX) / centerX) * 4.5;
+        const rotateX = ((y - centerY) / centerY) * -4.0;
+        const rotateY = ((x - centerX) / centerX) * 4.0;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px) scale3d(1.015, 1.015, 1.015)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-5px) scale3d(1.012, 1.012, 1.012)`;
       });
 
       card.addEventListener('mouseleave', () => {
@@ -75,105 +126,37 @@ function init3DCardTiltPhysics() {
 }
 
 /* ==========================================================================
-   SPA ROUTER WITH 3D SPATIAL ENTRANCE TRANSITIONS
+   SCROLL SPY (Highlight active section in Navbar)
    ========================================================================== */
-function initRouter() {
-  const routes = {
-    '/': 'page-home',
-    '/about': 'page-about',
-    '/skills': 'page-skills',
-    '/projects': 'page-projects',
-    '/certificates': 'page-certificates',
-    '/github': 'page-github',
-    '/competitive': 'page-competitive',
-    '/connect': 'page-connect'
-  };
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-smooth-link');
 
-  function handleRoute() {
-    let hash = window.location.hash.slice(1) || '/';
-    if (hash.length > 1 && hash.endsWith('/')) {
-      hash = hash.slice(0, -1);
-    }
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPosition = window.scrollY + 200;
 
-    const targetPageId = routes[hash] || 'page-home';
-
-    // Hide all sections
-    document.querySelectorAll('.page-section').forEach(sec => {
-      sec.classList.remove('active');
-    });
-
-    const activeSection = document.getElementById(targetPageId);
-    if (activeSection) {
-      activeSection.classList.remove('active');
-      void activeSection.offsetWidth; // DOM Reflow
-      activeSection.classList.add('active');
-
-      const cards = activeSection.querySelectorAll('.stagger-card');
-      cards.forEach((card, idx) => {
-        card.style.animation = 'none';
-        void card.offsetWidth;
-        card.style.animation = `staggerCardIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both`;
-        card.style.animationDelay = `${(idx * 0.065) + 0.05}s`;
-      });
-
-      const header = activeSection.querySelector('.section-header-wrap');
-      if (header) {
-        header.style.animation = 'none';
-        void header.offsetWidth;
-        header.style.animation = `headerSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) both`;
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (window.attachTiltToCards) window.attachTiltToCards();
-    }
-
-    // Update Nav Link highlighting
-    document.querySelectorAll('.nav-item, #mobile-menu a').forEach(link => {
-      const linkRoute = link.getAttribute('data-route');
-      if (linkRoute === hash || (hash === '' && linkRoute === '/')) {
-        link.classList.add('active');
-        if (link.classList.contains('text-muted-foreground')) {
-          link.classList.remove('text-muted-foreground');
-          link.classList.add('text-primary');
-        }
-      } else {
-        link.classList.remove('active');
-        if (link.parentElement.id === 'mobile-menu') {
-          link.classList.remove('text-primary');
-          link.classList.add('text-muted-foreground');
-        }
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        current = section.getAttribute('id');
       }
     });
 
-    setTimeout(initLucideIcons, 50);
-  }
-
-  window.addEventListener('hashchange', handleRoute);
-  handleRoute();
-}
-
-/* ==========================================================================
-   MOBILE MENU TOGGLE
-   ========================================================================== */
-function initMobileMenu() {
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-
-  if (!btn || !menu) return;
-
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
+    navLinks.forEach(link => {
+      link.classList.remove('text-cyan-400', 'font-bold');
+      link.classList.add('text-muted-foreground');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.remove('text-muted-foreground');
+        link.classList.add('text-cyan-400', 'font-bold');
+      }
     });
   });
 }
 
 /* ==========================================================================
-   PROJECT RENDERING & FILTERING
+   PROJECTS RENDERING & FILTERING
    ========================================================================== */
 function renderProjects(filter = 'all') {
   const grid = document.getElementById('projects-grid');
@@ -187,9 +170,7 @@ function renderProjects(filter = 'all') {
 
   filtered.forEach((p, idx) => {
     const card = document.createElement('div');
-    card.className = 'card-gradient stagger-card rounded-2xl border border-border overflow-hidden flex flex-col justify-between group';
-    card.style.animation = `staggerCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both`;
-    card.style.animationDelay = `${(idx * 0.075) + 0.04}s`;
+    card.className = 'card-gradient rounded-2xl border border-border overflow-hidden flex flex-col justify-between group';
 
     const liveBtn = p.hasLiveDemo
       ? `<a href="${p.liveUrl}" target="_blank" class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-medium hover:bg-emerald-500/20 transition-all flex items-center gap-1.5">
@@ -237,67 +218,7 @@ function renderProjects(filter = 'all') {
 
   initLucideIcons();
   if (window.attachTiltToCards) window.attachTiltToCards();
-}
-
-function renderFeaturedProjects() {
-  const homeGrid = document.getElementById('home-featured-grid');
-  if (!homeGrid || typeof projectsData === 'undefined') return;
-
-  homeGrid.innerHTML = '';
-  const featured = projectsData.slice(0, 3);
-
-  featured.forEach((p, idx) => {
-    const card = document.createElement('div');
-    card.className = 'card-gradient stagger-card rounded-2xl border border-border overflow-hidden flex flex-col justify-between group';
-    card.style.animation = `staggerCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both`;
-    card.style.animationDelay = `${(idx * 0.08) + 0.1}s`;
-
-    const liveBtn = p.hasLiveDemo
-      ? `<a href="${p.liveUrl}" target="_blank" class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-medium hover:bg-emerald-500/20 transition-all flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Live ↗</span>
-        </a>`
-      : '';
-
-    card.innerHTML = `
-      <div>
-        <div class="h-2 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"></div>
-        <div class="p-6 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="badge-chip text-primary border-primary/30">${p.badge}</span>
-            ${liveBtn}
-          </div>
-
-          <h3 class="text-lg font-bold text-foreground font-heading group-hover:text-primary transition-colors">
-            ${p.title}
-          </h3>
-
-          <p class="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-            ${p.description}
-          </p>
-
-          <div class="flex flex-wrap gap-1.5 pt-2">
-            ${p.techStack.slice(0, 4).map(t => `<span class="badge-chip !text-[10px] !py-0.5 !px-2">${t}</span>`).join('')}
-          </div>
-        </div>
-      </div>
-
-      <div class="p-6 pt-0 border-t border-border/60 flex items-center justify-between gap-3 mt-4">
-        <button onclick="openProjectModal('${p.id}')" class="btn-secondary !text-xs !py-1.5 !px-3 font-mono">
-          <span>Specs</span>
-        </button>
-        <a href="${p.githubUrl}" target="_blank" class="btn-outline !text-xs !py-1.5 !px-3 font-mono flex items-center gap-1">
-          <span>Code</span>
-          <i data-lucide="github" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
-    `;
-
-    homeGrid.appendChild(card);
-  });
-
-  initLucideIcons();
-  if (window.attachTiltToCards) window.attachTiltToCards();
+  if (window.attachCursorHover) window.attachCursorHover();
 }
 
 function initFilterButtons() {
@@ -326,9 +247,7 @@ function renderCertificates(filter = 'all') {
 
   filtered.forEach((c, idx) => {
     const card = document.createElement('div');
-    card.className = 'card-gradient stagger-card rounded-2xl border border-border overflow-hidden flex flex-col justify-between group';
-    card.style.animation = `staggerCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both`;
-    card.style.animationDelay = `${(idx * 0.06) + 0.04}s`;
+    card.className = 'card-gradient rounded-2xl border border-border overflow-hidden flex flex-col justify-between group';
 
     card.innerHTML = `
       <div>
@@ -370,6 +289,7 @@ function renderCertificates(filter = 'all') {
 
   initLucideIcons();
   if (window.attachTiltToCards) window.attachTiltToCards();
+  if (window.attachCursorHover) window.attachCursorHover();
 }
 
 function initCertFilterButtons() {
@@ -397,7 +317,6 @@ function openCertificateModal(certId) {
   const skillsEl = document.getElementById('modal-cert-skills');
   skillsEl.innerHTML = (c.skills || []).map(s => `<span class="badge-chip">${s}</span>`).join('');
 
-  // Preview Box
   const previewBox = document.getElementById('modal-cert-preview-box');
   if (c.fileType === 'image') {
     previewBox.innerHTML = `<img src="${c.localFile}" alt="${c.title}" class="w-full h-full object-contain p-2 rounded-lg" />`;
@@ -462,7 +381,6 @@ function closeProjectModal() {
   if (modal) modal.classList.remove('active');
 }
 
-// Close modals on overlay click
 window.addEventListener('click', (e) => {
   const projModal = document.getElementById('project-modal');
   const resumeModal = document.getElementById('resume-modal');
@@ -487,23 +405,8 @@ function closeResumeModal() {
 }
 
 /* ==========================================================================
-   CONTACT FORM & TOAST NOTIFICATIONS
+   TOAST NOTIFICATIONS & COPY
    ========================================================================== */
-function handleContactFormSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('form-name').value;
-  const email = document.getElementById('form-email').value;
-  const subject = document.getElementById('form-subject').value;
-  const message = document.getElementById('form-message').value;
-
-  showToast(`Thank you, ${name}! Your message has been prepared.`);
-
-  const mailtoUrl = `mailto:bhaveshg1357@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
-  window.open(mailtoUrl, '_blank');
-
-  e.target.reset();
-}
-
 function copyToClipboard(text, message = 'Copied to clipboard!') {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
@@ -546,58 +449,4 @@ function showToast(message) {
     toast.style.transition = 'all 0.3s ease';
     setTimeout(() => toast.remove(), 300);
   }, 3500);
-}
-
-
-/* ==========================================================================
-   CUSTOM MAGNETIC CURSOR ENGINE (moncy.dev style)
-   ========================================================================== */
-function initCustomCursor() {
-  const dot = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
-
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouch) {
-    dot.style.display = 'none';
-    ring.style.display = 'none';
-    return;
-  }
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-  });
-
-  function renderCursor() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(renderCursor);
-  }
-  requestAnimationFrame(renderCursor);
-
-  function attachCursorHover() {
-    const hoverables = document.querySelectorAll('a, button, input, textarea, .card-gradient, .what-i-do-card, .marquee-pill');
-    hoverables.forEach(el => {
-      if (el.dataset.cursorAttached) return;
-      el.dataset.cursorAttached = 'true';
-
-      el.addEventListener('mouseenter', () => {
-        ring.classList.add('active-hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        ring.classList.remove('active-hover');
-      });
-    });
-  }
-
-  attachCursorHover();
-  window.attachCursorHover = attachCursorHover;
 }

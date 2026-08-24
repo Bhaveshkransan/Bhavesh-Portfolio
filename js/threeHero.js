@@ -199,7 +199,8 @@
     function animate() {
       requestAnimationFrame(animate);
 
-      if (!isHomePageActive()) return;
+      // Continuous smooth render
+      // if (!isHomePageActive()) return;
 
       const time = clock.getElapsedTime();
 
