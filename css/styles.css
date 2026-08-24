@@ -62,7 +62,7 @@ a:hover {
   background: var(--accentColor);
 }
 
-/* Custom Magnetic Cursor (moncy.dev style) */
+/* Custom Magnetic Cursor (moncy.dev) */
 .cursor-main {
   position: fixed;
   top: 0;
@@ -140,17 +140,26 @@ a:hover {
   align-items: center;
   gap: 8px;
 }
-.header ul {
+.navbar-connect {
   font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #adacac;
+}
+.navbar-connect:hover {
+  color: var(--accentColor);
+}
+.header ul {
+  font-size: 14px;
   display: flex;
   list-style: none;
-  column-gap: 40px;
+  column-gap: 35px;
   align-items: center;
 }
 .header ul li {
   letter-spacing: 1px;
   color: #eae5ec;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -159,6 +168,7 @@ a:hover {
 }
 @media only screen and (max-width: 900px) {
   .header ul { display: none; }
+  .navbar-connect { display: none; }
 }
 
 /* Hover Link Effect */
@@ -204,7 +214,7 @@ a:hover {
   pointer-events: auto;
 }
 .social-icons a {
-  font-size: 24px;
+  font-size: 22px;
   color: #eae5ec;
   transition: 0.3s;
   display: flex;
@@ -237,102 +247,165 @@ a:hover {
   .social-icons { display: flex; }
 }
 
-/* Landing Section (moncy.dev) */
+/* Landing Section (1:1 Moncy.dev) */
 .landing-section {
   width: 100%;
   max-width: var(--cMaxWidth);
   margin: auto;
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 700px;
   display: flex;
   align-items: center;
-  padding: 120px 0 60px;
+  justify-content: center;
+  overflow: hidden;
 }
 .landing-container {
   width: var(--cWidth);
   margin: auto;
+  height: 100%;
   position: relative;
   max-width: var(--cMaxWidth);
+  z-index: 10;
 }
 .landing-circle1 {
-  top: 5%;
-  left: 10%;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
   position: absolute;
   width: 320px;
   height: 320px;
-  background-color: #aa42ff;
-  box-shadow: inset -50px 40px 60px rgba(194, 164, 255, 0.6);
-  filter: blur(80px);
+  background-color: #fb8dff;
+  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
+  filter: blur(70px);
   border-radius: 50%;
-  opacity: 0.35;
-  animation: floatCircle 8s ease-in-out infinite alternate;
+  opacity: 0.4;
+  animation: loadingCircle 8s linear infinite;
 }
-.landing-circle2 {
-  bottom: 10%;
-  right: 12%;
-  z-index: 1;
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  background-color: #38bdf8;
-  filter: blur(90px);
-  border-radius: 50%;
-  opacity: 0.25;
-  animation: floatCircle 10s ease-in-out infinite alternate-reverse;
-}
-@keyframes floatCircle {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-30px) scale(1.1); }
+@keyframes loadingCircle {
+  0% { transform: translate(-50%, -40%) rotateZ(0deg); }
+  100% { transform: translate(-50%, -40%) rotateZ(360deg); }
 }
 
+.landing-circle2 {
+  top: 50%;
+  right: 5%;
+  z-index: 1;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: #aa42ff;
+  filter: blur(60px);
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+/* Character 3D Centerpiece */
+.character-model {
+  height: 85vh;
+  position: absolute;
+  max-width: 1920px;
+  max-height: 1080px;
+  transform: translateX(-50%);
+  width: 100%;
+  left: 50%;
+  z-index: 2;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.character-model canvas {
+  position: relative;
+  z-index: 3;
+}
+.character-rim {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  z-index: 1;
+  background-color: #f59bf8;
+  box-shadow: inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
+  filter: blur(60px);
+  border-radius: 50%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 55%) scale(1.4);
+  opacity: 0.8;
+}
+
+/* Left Hero Intro */
+.landing-intro {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  left: 6%;
+  transform: translateY(-50%);
+}
 .landing-intro h2 {
-  font-size: 28px;
+  margin: 0;
+  color: var(--accentColor);
+  font-size: 24px;
   font-weight: 300;
   letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #adacac;
-  margin: 0;
 }
 .landing-intro h1 {
-  font-size: 110px;
-  line-height: 95px;
-  letter-spacing: -2px;
-  font-weight: 800;
-  margin: 10px 0 20px;
+  margin: 0;
+  letter-spacing: 2px;
+  font-size: 52px;
+  line-height: 48px;
+  font-weight: 700;
+  font-family: "Geist", sans-serif;
+  color: #fff;
   text-transform: uppercase;
 }
-.landing-intro h1 span {
-  background: linear-gradient(135deg, #ffffff 0%, #c2a4ff 60%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+
+/* Right Hero Info */
 .landing-info {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-top: 15px;
-  flex-wrap: wrap;
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  transform: translateY(-50%);
+  z-index: 9;
+  text-align: left;
 }
 .landing-info h3 {
-  font-size: 32px;
+  font-size: 24px;
+  letter-spacing: 2px;
   font-weight: 300;
-  color: #adacac;
+  color: var(--accentColor);
+  margin: 0;
 }
 .landing-info h2 {
-  font-size: 32px;
+  margin: 0;
+  font-family: "Geist", sans-serif;
   font-weight: 700;
-  color: var(--accentColor);
+  font-size: 52px;
+  line-height: 52px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
 }
-@media only screen and (max-width: 1200px) {
-  .landing-intro h1 { font-size: 80px; line-height: 75px; }
-  .landing-intro h2 { font-size: 22px; }
-  .landing-info h3, .landing-info h2 { font-size: 24px; }
+h2.landing-info-h2 {
+  color: #c481ff;
+  font-size: 60px;
+  line-height: 58px;
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-weight: 700;
+  position: relative;
 }
-@media only screen and (max-width: 768px) {
-  .landing-intro h1 { font-size: 50px; line-height: 48px; }
-  .landing-intro h2 { font-size: 18px; }
-  .landing-info h3, .landing-info h2 { font-size: 20px; }
+
+@media screen and (max-width: 1200px) {
+  .landing-intro h1, .landing-info h2 { font-size: 40px; line-height: 38px; }
+  h2.landing-info-h2 { font-size: 46px; }
+}
+@media screen and (max-width: 900px) {
+  .landing-intro { left: 50%; transform: translate(-50%, -120%); text-align: center; }
+  .landing-info { right: auto; left: 50%; transform: translate(-50%, 120%); text-align: center; }
+  .character-model { height: 60vh; bottom: 50px; }
 }
 
 /* About Section (moncy.dev) */
@@ -611,7 +684,6 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  pt-4;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 20px;
 }

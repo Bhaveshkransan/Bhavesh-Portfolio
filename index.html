@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bhavesh Gangurde — Creative Developer &amp; AI Builder</title>
-  <meta name="title" content="Bhavesh Gangurde — Creative Developer &amp; AI Builder">
-  <meta name="description" content="Bhavesh Gangurde — Full-Stack Developer, AI Automation Builder, Computer Engineering Student at Terna College.">
+  <title>Bhavesh Gangurde — Creative Developer | AI Builder</title>
+  <meta name="title" content="Bhavesh Gangurde — Creative Developer | AI Builder">
+  <meta name="description" content="Portfolio of Bhavesh Gangurde — Full-Stack MERN Developer, AI Automation Builder, Computer Engineering Student at Terna College.">
 
   <!-- Geist & JetBrains Mono Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +16,10 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Three.js 3D Engine -->
+  <!-- Three.js 3D Engine & Loaders -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
   <!-- Moncy CSS -->
   <link rel="stylesheet" href="css/styles.css">
@@ -27,52 +29,48 @@
   <!-- Custom Magnetic Cursor (moncy.dev) -->
   <div class="cursor-main" id="cursor-main"></div>
 
-  <!-- Navbar (moncy.dev) -->
+  <!-- Top Floating Glowing Dot -->
+  <div class="landing-circle1"></div>
+  <div class="landing-circle2"></div>
+
+  <!-- Top Fixed Navbar (moncy.dev) -->
   <header class="header">
     <div class="header-in">
       <a href="#landingDiv" class="navbar-title hover-link">
         <div class="hover-in">
-          <span>Bhavesh Gangurde</span>
-          <div>Bhavesh Gangurde</div>
+          <span>bhavesh.dev</span>
+          <div>bhavesh.dev</div>
         </div>
       </a>
+
+      <div class="navbar-connect hover-link" onclick="copyToClipboard('bhaveshg1357@gmail.com', 'Email copied!')" style="cursor: pointer;">
+        <div class="hover-in">
+          <span>connect@bhavesh.dev</span>
+          <div>connect@bhavesh.dev</div>
+        </div>
+      </div>
 
       <ul>
         <li>
           <a href="#about" class="hover-link">
-            <div class="hover-in">About<div>About</div></div>
-          </a>
-        </li>
-        <li>
-          <a href="#what-i-do" class="hover-link">
-            <div class="hover-in">What I Do<div>What I Do</div></div>
-          </a>
-        </li>
-        <li>
-          <a href="#career" class="hover-link">
-            <div class="hover-in">Career<div>Career</div></div>
+            <div class="hover-in">ABOUT<div>ABOUT</div></div>
           </a>
         </li>
         <li>
           <a href="#work" class="hover-link">
-            <div class="hover-in">Work<div>Work</div></div>
-          </a>
-        </li>
-        <li>
-          <a href="#certificates" class="hover-link">
-            <div class="hover-in">Certificates<div>Certificates</div></div>
+            <div class="hover-in">WORK<div>WORK</div></div>
           </a>
         </li>
         <li>
           <a href="#contact" class="hover-link">
-            <div class="hover-in">Contact<div>Contact</div></div>
+            <div class="hover-in">CONTACT<div>CONTACT</div></div>
           </a>
         </li>
       </ul>
     </div>
   </header>
 
-  <!-- Fixed Social Icons & Resume Button (moncy.dev) -->
+  <!-- Left Fixed Social Icons & Bottom Right Resume Button (moncy.dev) -->
   <div class="icons-section">
     <div class="social-icons">
       <a href="https://github.com/Bhaveshkransan" target="_blank" aria-label="GitHub">
@@ -101,15 +99,16 @@
   <!-- Main Container -->
   <div class="container-main">
 
-    <!-- 1. LANDING (moncy.dev style) -->
+    <!-- 1. LANDING HERO (1:1 Moncy.dev with 3D Character Model) -->
     <div class="landing-section" id="landingDiv">
-      <div class="landing-circle1"></div>
-      <div class="landing-circle2"></div>
+      
+      <!-- 3D Interactive Character Model Centerpiece -->
+      <div class="character-model" id="character-model-container">
+        <div class="character-rim"></div>
+      </div>
 
-      <!-- 3D Neural Canvas in background -->
-      <div id="three-hero-container" style="position: absolute; inset: 0; pointer-events: none; z-index: 2;"></div>
-
-      <div class="landing-container" style="z-index: 5;">
+      <div class="landing-container">
+        <!-- Left Hero Block -->
         <div class="landing-intro">
           <h2>Hello! I'm</h2>
           <h1>
@@ -119,15 +118,23 @@
           </h1>
         </div>
 
+        <!-- Right Hero Block -->
         <div class="landing-info">
           <h3>A Creative</h3>
-          <h2>Full-Stack Developer &amp; AI Builder</h2>
+          <h2 class="landing-info-h2">
+            <div class="landing-h2-1">DEVELOPER</div>
+            <div class="landing-h2-2">AI BUILDER</div>
+          </h2>
+          <h2>
+            <div class="landing-h2-info">AI BUILDER</div>
+            <div class="landing-h2-info-1">DEVELOPER</div>
+          </h2>
         </div>
       </div>
     </div>
 
-    <!-- 2. ABOUT (moncy.dev style) -->
-    <div class="about-section" id="about">
+    <!-- 2. ABOUT SECTION (moncy.dev) -->
+    <div class="about-section section-container" id="about">
       <div class="about-me">
         <h3 class="title">About Me</h3>
         <p class="para">
@@ -137,7 +144,7 @@
       </div>
     </div>
 
-    <!-- 3. WHAT I DO (moncy.dev style) -->
+    <!-- 3. WHAT I DO (moncy.dev) -->
     <div class="whatIDO" id="what-i-do">
       <div class="what-box">
         <h2 class="title">
@@ -205,7 +212,7 @@
       </div>
     </div>
 
-    <!-- 4. CAREER (moncy.dev style) -->
+    <!-- 4. CAREER (moncy.dev) -->
     <div class="career-section section-container" id="career">
       <div class="career-container">
         <h2>
@@ -270,7 +277,7 @@
       </div>
     </div>
 
-    <!-- 5. WORK (moncy.dev style) -->
+    <!-- 5. WORK (moncy.dev) -->
     <div class="work-section" id="work">
       <h2>Selected Work</h2>
       <div class="work-grid" id="projects-grid">
@@ -278,7 +285,7 @@
       </div>
     </div>
 
-    <!-- 6. CERTIFICATES (moncy.dev style) -->
+    <!-- 6. CERTIFICATES (moncy.dev) -->
     <div class="work-section" id="certificates">
       <h2>Verified Certifications</h2>
       <div class="work-grid" id="certificates-grid">
@@ -286,7 +293,7 @@
       </div>
     </div>
 
-    <!-- 7. CONTACT (moncy.dev style) -->
+    <!-- 7. CONTACT (moncy.dev) -->
     <div class="contact-section" id="contact">
       <h3>
         LET'S BUILD <br />
@@ -384,7 +391,7 @@
 
   <!-- Scripts -->
   <script src="js/projectsData.js"></script>
-  <script src="js/threeHero.js"></script>
+  <script src="js/character3D.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
