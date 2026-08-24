@@ -1,121 +1,93 @@
-import "./styles/Work.css";
+import { projects, certificates } from "../data/portfolioData";
 import WorkImage from "./WorkImage";
+import "./styles/Work.css";
 
 const Work = () => {
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          My <span>Work &amp; Credentials</span>
         </h2>
-        <div className="work-flex">
-          
-          {/* 01: ShopNest */}
-          <div className="work-box">
-            <div className="work-info">
-              <div className="work-title">
-                <h3>01</h3>
-                <div>
-                  <h4>ShopNest E-Commerce</h4>
-                  <p>Full-Stack MERN &amp; Razorpay</p>
-                </div>
-              </div>
-              <p>
-                Comprehensive e-commerce platform with JWT auth, Razorpay payments, admin product management, and Cloudinary media pipelines.
-              </p>
-            </div>
-            <WorkImage
-              image="/images/shopnest.webp"
-              alt="ShopNest E-Commerce"
-              link="https://github.com/Bhaveshkransan/ShopNest-Ecommerce-MERN"
-            />
+
+        {/* ===================================================================
+            ROW 1: FEATURED PROJECTS SLIDING WINDOW
+            =================================================================== */}
+        <div className="work-row-wrapper">
+          <div className="work-row-header">
+            <h3>01 / FEATURED PROJECTS</h3>
+            <span className="work-row-hint">← Drag or Scroll Horizontally →</span>
           </div>
 
-          {/* 02: SocialHub AI */}
-          <div className="work-box">
-            <div className="work-info">
-              <div className="work-title">
-                <h3>02</h3>
-                <div>
-                  <h4>SocialHub AI</h4>
-                  <p>Real-Time MERN &amp; Socket.IO</p>
+          <div className="work-slider-track">
+            {projects.map((p, idx) => (
+              <div className="work-box" key={p.id}>
+                <div className="work-info">
+                  <div className="work-title">
+                    <h3>{String(idx + 1).padStart(2, "0")}</h3>
+                    <div>
+                      <h4>{p.title}</h4>
+                      <p>{p.tagline}</p>
+                    </div>
+                  </div>
+                  <p>{p.description}</p>
+                  <div className="work-tech-tags">
+                    {p.techStack.map((tech) => (
+                      <span key={tech} className="work-tech-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+                <WorkImage
+                  image={p.image}
+                  alt={p.title}
+                  link={p.githubUrl}
+                />
               </div>
-              <p>
-                Full-featured social platform featuring sub-50ms instant messaging via Socket.IO, explore feeds, likes, comments, and dark mode.
-              </p>
-            </div>
-            <WorkImage
-              image="/images/socialhub.webp"
-              alt="SocialHub AI"
-              link="https://github.com/Bhaveshkransan/socialhub-ai"
-            />
+            ))}
           </div>
-
-          {/* 03: SMS & Email Spam Classifier */}
-          <div className="work-box">
-            <div className="work-info">
-              <div className="work-title">
-                <h3>03</h3>
-                <div>
-                  <h4>SMS &amp; Email Spam Classifier</h4>
-                  <p>Machine Learning &amp; Python NLP</p>
-                </div>
-              </div>
-              <p>
-                NLP-based machine learning classification pipeline with Multinomial Naive Bayes model, text preprocessing, and interactive Streamlit UI.
-              </p>
-            </div>
-            <WorkImage
-              image="/images/spam_classifier.webp"
-              alt="SMS & Email Spam Classifier"
-              link="https://github.com/Bhaveshkransan"
-            />
-          </div>
-
-          {/* 04: AI Response Automation */}
-          <div className="work-box">
-            <div className="work-info">
-              <div className="work-title">
-                <h3>04</h3>
-                <div>
-                  <h4>AI Response Automation</h4>
-                  <p>Google Gemini &amp; RPA</p>
-                </div>
-              </div>
-              <p>
-                Automated social response agent powered by Google Gemini SDK and RPA bots for instant message classification and auto-replies.
-              </p>
-            </div>
-            <WorkImage
-              image="/images/ai_automation.webp"
-              alt="AI Response Automation"
-              link="https://github.com/Bhaveshkransan"
-            />
-          </div>
-
-          {/* 05: KolamSense SIH */}
-          <div className="work-box">
-            <div className="work-info">
-              <div className="work-title">
-                <h3>05</h3>
-                <div>
-                  <h4>KolamSense (SIH 2025)</h4>
-                  <p>Computer Vision &amp; Web</p>
-                </div>
-              </div>
-              <p>
-                Smart India Hackathon project analyzing symmetrical pattern recognition with computer vision and responsive dashboard UI.
-              </p>
-            </div>
-            <WorkImage
-              image="/images/kolamsense.webp"
-              alt="KolamSense SIH"
-              link="https://github.com/Bhaveshkransan"
-            />
-          </div>
-
         </div>
+
+        {/* ===================================================================
+            ROW 2: VERIFIED CERTIFICATIONS SLIDING WINDOW
+            =================================================================== */}
+        <div className="work-row-wrapper" style={{ marginTop: "60px" }}>
+          <div className="work-row-header">
+            <h3>02 / VERIFIED CERTIFICATIONS</h3>
+            <span className="work-row-hint">← Drag or Scroll Horizontally →</span>
+          </div>
+
+          <div className="work-slider-track">
+            {certificates.map((c, idx) => (
+              <div className="work-box cert-box" key={c.id}>
+                <div className="work-info">
+                  <div className="work-title">
+                    <h3>{String(idx + 1).padStart(2, "0")}</h3>
+                    <div>
+                      <h4>{c.title}</h4>
+                      <p className="cert-issuer">{c.issuer}</p>
+                    </div>
+                  </div>
+                  <p>{c.description}</p>
+                  <div className="work-tech-tags">
+                    {c.skills.map((skill) => (
+                      <span key={skill} className="work-tech-pill cert-pill">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <WorkImage
+                  image={c.image || "/images/placeholder.webp"}
+                  alt={c.title}
+                  link={c.localFile}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </div>
   );
