@@ -32,7 +32,7 @@ const Scene = () => {
         antialias: true,
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      renderer.setPixelRatio(window.devicePixelRatio);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -108,7 +108,6 @@ const Scene = () => {
       }
       const animate = () => {
         requestAnimationFrame(animate);
-        if (window.scrollY > 1200) return; // Skip GPU render when scrolled past character
         if (headBone) {
           handleHeadRotation(
             headBone,
