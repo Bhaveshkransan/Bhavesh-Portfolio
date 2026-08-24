@@ -121,6 +121,23 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+
+/* Navbar & Ambient Glows */
+.navbar-blur {
+  background: rgba(6, 7, 10, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Glass Panels */
 .glass-panel {
   background: rgba(14, 18, 27, 0.7);
@@ -268,7 +285,7 @@ body {
 .page-section {
   display: none;
   min-height: calc(100vh - 80px);
-  padding: 5.5rem 0 4rem;
+  padding: 1.5rem 0 4rem;
 }
 .page-section.active {
   display: block;
