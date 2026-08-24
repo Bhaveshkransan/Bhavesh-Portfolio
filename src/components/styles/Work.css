@@ -1,16 +1,28 @@
 
 .work-section {
-  padding: 120px 0 160px;
+  padding: 100px 0 140px;
   width: 100%;
   position: relative;
   box-sizing: border-box;
+  overflow: visible;
+  height: auto;
+}
+
+.work-container {
+  width: 92%;
+  max-width: 1400px;
+  margin: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .work-section h2 {
-  font-size: 70px;
-  font-weight: 500;
-  margin-bottom: 50px;
+  font-size: 65px;
+  font-weight: 700;
+  margin-bottom: 40px;
   text-align: left;
+  letter-spacing: -1px;
 }
 
 .work-section h2 > span {
@@ -19,60 +31,93 @@
 
 .work-row-wrapper {
   width: 100%;
-  margin-bottom: 40px;
+  box-sizing: border-box;
 }
 
 .work-row-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+  align-items: flex-end;
+  margin-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 12px;
+  padding-bottom: 14px;
 }
 
 .work-row-header h3 {
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 2px;
   color: var(--accentColor);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   margin: 0;
 }
 
-.work-row-hint {
-  font-size: 12px;
-  color: #777;
-  letter-spacing: 1px;
-  font-family: monospace;
+.work-row-sub {
+  font-size: 13px;
+  color: #adacac;
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+.work-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.work-arrow-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.25s ease;
+}
+
+.work-arrow-btn:hover {
+  background: var(--accentColor);
+  color: #000;
+  border-color: var(--accentColor);
+  transform: scale(1.08);
+}
+
+.cert-arrow-btn:hover {
+  background: #38bdf8;
+  color: #000;
+  border-color: #38bdf8;
 }
 
 /* Horizontal Sliding Track */
 .work-slider-track {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-bottom: 20px;
-  padding-top: 10px;
+  padding: 10px 4px 20px;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
   scrollbar-width: thin;
-  scrollbar-color: rgba(194, 164, 255, 0.3) rgba(255, 255, 255, 0.05);
+  scrollbar-color: rgba(194, 164, 255, 0.35) rgba(255, 255, 255, 0.04);
 }
 
 .work-slider-track::-webkit-scrollbar {
-  height: 6px;
+  height: 7px;
 }
 
 .work-slider-track::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .work-slider-track::-webkit-scrollbar-thumb {
-  background: rgba(194, 164, 255, 0.3);
-  border-radius: 4px;
+  background: rgba(194, 164, 255, 0.35);
+  border-radius: 6px;
 }
 
 .work-slider-track::-webkit-scrollbar-thumb:hover {
@@ -81,23 +126,24 @@
 
 /* Individual Work & Cert Cards */
 .work-box {
-  flex: 0 0 460px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex: 0 0 420px;
+  background: #110e14;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 35px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.35s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
+  scroll-snap-align: start;
 }
 
 .work-box:hover {
   border-color: var(--accentColor);
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px -10px rgba(170, 66, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px -10px rgba(170, 66, 255, 0.25);
+  background: #15111a;
 }
 
 .work-box.cert-box {
@@ -106,33 +152,38 @@
 
 .work-box.cert-box:hover {
   border-color: #38bdf8;
-  box-shadow: 0 15px 35px -10px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 18px 40px -10px rgba(56, 189, 248, 0.25);
+  background: #0f1520;
 }
 
 .work-title {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .work-title h3 {
-  font-size: 38px;
-  line-height: 38px;
-  font-weight: 700;
+  font-size: 34px;
+  line-height: 34px;
+  font-weight: 800;
   color: #fff;
   margin: 0;
 }
 
 .work-title > div {
   text-align: right;
+  max-width: 75%;
 }
 
 .work-title h4 {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   color: #fff;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .work-title p {
@@ -146,24 +197,28 @@
   color: #38bdf8 !important;
 }
 
-.work-info > p {
+p.work-desc {
   font-size: 13px;
   line-height: 20px;
   color: #adacac;
   font-weight: 300;
-  margin: 10px 0 16px;
+  margin: 10px 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .work-tech-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .work-tech-pill {
   font-size: 11px;
-  padding: 3px 9px;
+  padding: 3px 8px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
@@ -193,7 +248,7 @@
 
 .work-image img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -201,11 +256,11 @@
 
 .work-link {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 10px;
+  right: 10px;
   background-color: var(--backgroundColor);
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -214,7 +269,7 @@
   color: #fff;
   border: 1px solid var(--accentColor);
   box-shadow: 0 0 15px rgba(194, 164, 255, 0.4);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   opacity: 0.85;
 }
 
@@ -226,11 +281,11 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .work-box { flex: 0 0 380px; padding: 25px; }
-  .work-section h2 { font-size: 50px; }
+  .work-box { flex: 0 0 360px; padding: 22px; }
+  .work-section h2 { font-size: 45px; }
 }
 
 @media only screen and (max-width: 600px) {
-  .work-box { flex: 0 0 310px; padding: 20px; }
-  .work-section h2 { font-size: 38px; }
+  .work-box { flex: 0 0 300px; padding: 18px; }
+  .work-section h2 { font-size: 36px; }
 }
