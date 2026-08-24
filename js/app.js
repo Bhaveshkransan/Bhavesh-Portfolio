@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initLucideIcons();
+  initCustomCursor();
   initRouter();
   renderFeaturedProjects();
   renderProjects('all');
@@ -545,4 +546,58 @@ function showToast(message) {
     toast.style.transition = 'all 0.3s ease';
     setTimeout(() => toast.remove(), 300);
   }, 3500);
+}
+
+
+/* ==========================================================================
+   CUSTOM MAGNETIC CURSOR ENGINE (moncy.dev style)
+   ========================================================================== */
+function initCustomCursor() {
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouch) {
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    return;
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+  });
+
+  function renderCursor() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(renderCursor);
+  }
+  requestAnimationFrame(renderCursor);
+
+  function attachCursorHover() {
+    const hoverables = document.querySelectorAll('a, button, input, textarea, .card-gradient, .what-i-do-card, .marquee-pill');
+    hoverables.forEach(el => {
+      if (el.dataset.cursorAttached) return;
+      el.dataset.cursorAttached = 'true';
+
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('active-hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('active-hover');
+      });
+    });
+  }
+
+  attachCursorHover();
+  window.attachCursorHover = attachCursorHover;
 }

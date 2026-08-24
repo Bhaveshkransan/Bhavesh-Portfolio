@@ -137,106 +137,182 @@
     <!-- =======================================================================
          PAGE 1: HOME (HERO & OVERVIEW)
          ======================================================================= -->
+        <!-- =======================================================================
+         PAGE 1: HOME (Hero + Moncy-style Bold Typography + What I Do + Featured Work)
+         ======================================================================= -->
     <section id="page-home" class="page-section active relative overflow-hidden">
       <!-- 3D Neural Spider-Web Canvas (Home Page Only) -->
       <div id="three-hero-container" class="absolute inset-0 pointer-events-none z-0 overflow-hidden"></div>
 
       <div class="container mx-auto px-6 relative z-10">
         
-        <!-- Hero Section -->
-        <div class="max-w-4xl mx-auto text-center pt-8 pb-16 space-y-8 relative">
-          <div class="hero-readability-shield"></div>
+        <!-- Hero Header -->
+        <div class="max-w-4xl mx-auto text-center space-y-6 pt-6 pb-12">
           
-          <!-- Avatar with Glowing Neon Ring -->
-          <div class="avatar-glow-ring mx-auto">
-            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-teal-500 to-blue-600 shadow-2xl flex items-center justify-center">
-              <div class="w-full h-full rounded-full bg-card overflow-hidden flex items-center justify-center text-4xl font-extrabold text-primary font-heading border-2 border-background">
-                BG
+          <!-- Availability & Consistency Badges -->
+          <div class="inline-flex items-center gap-3 p-1.5 px-4 rounded-full bg-secondary/80 border border-border backdrop-blur-md">
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs font-mono text-muted-foreground">Available for SDE &amp; AI Internships</span>
+            <span class="text-border text-xs">•</span>
+            <span class="text-xs font-mono text-cyan-400 font-medium">8.12 CGPA • Terna College</span>
+          </div>
+
+          <!-- Bold Typography (Moncy-inspired) -->
+          <div class="space-y-2">
+            <h2 class="text-sm md:text-base font-mono uppercase tracking-[0.25em] text-muted-foreground">HELLO! I'M</h2>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-heading tracking-tight text-foreground uppercase leading-none">
+              BHAVESH <span class="gradient-text">GANGURDE</span>
+            </h1>
+          </div>
+
+          <!-- Dynamic Rolling Role Rotator (Moncy-inspired) -->
+          <div class="text-xl sm:text-2xl md:text-3xl font-heading text-muted-foreground flex items-center justify-center gap-2">
+            <span>A Passionate</span>
+            <div class="role-rotator-container">
+              <div class="role-rotator-track text-left">
+                <div class="role-rotator-item text-cyan-400">Full-Stack MERN Developer</div>
+                <div class="role-rotator-item text-purple-400">Generative AI &amp; RPA Builder</div>
+                <div class="role-rotator-item text-blue-400">C++ Problem Solver (DSA)</div>
+                <div class="role-rotator-item text-emerald-400">Computer Engineering Student</div>
               </div>
             </div>
           </div>
 
-          <!-- Availability Badge -->
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/80 border border-primary/30 text-xs font-mono text-primary shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>Open for Remote Software Engineering &amp; AI Internships</span>
-          </div>
-
-          <!-- Main Hero Headings -->
-          <div class="space-y-3">
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading">
-              Hi, I'm <span class="gradient-text-hero">Bhavesh Gangurde</span>
-            </h1>
-            <p class="text-xl sm:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto">
-              Full-Stack Developer &amp; AI Automation Enthusiast
-            </p>
-          </div>
-
-          <!-- Bio Pitch -->
-          <p class="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Computer Engineering student at <strong class="text-foreground">Terna Engineering College</strong> (8.12 CGPA). I build scalable full-stack web applications with <strong class="text-primary">React &amp; Node.js</strong>, engineer agentic workflows with <strong class="text-primary">Generative AI &amp; RPA</strong>, and solve Data Structures in C++.
+          <!-- High-Impact Bio -->
+          <p class="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Computer Engineering student at <strong class="text-foreground">Terna Engineering College, University of Mumbai</strong> (CGPA: 8.12). 
+            Architect of full-stack MERN platforms, Generative AI agentic workflows, and robotic process automation with an unbroken <strong class="text-cyan-400">180-day streak</strong> of continuous engineering.
           </p>
 
-          <!-- Hero Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a href="#/projects" class="btn-primary">
-              <span>Explore Projects</span>
+              <span>Explore My Work</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
-            <a href="#/connect" class="btn-outline">
-              <span>Let's Connect</span>
-              <i data-lucide="mail" class="w-4 h-4"></i>
-            </a>
             <button onclick="openResumeModal()" class="btn-secondary">
-              <span>Inspect Resume</span>
-              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
+              <span>View ATS Resume</span>
             </button>
+            <a href="#/connect" class="btn-outline">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>Let's Connect</span>
+            </a>
           </div>
 
-          <!-- Key Metrics Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-10 max-w-3xl mx-auto text-left">
-            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
-              <div class="text-xs font-mono text-muted-foreground uppercase">ACADEMIC STANDING</div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-foreground font-mono mt-1">8.12 <span class="text-xs text-primary font-normal">CGPA</span></div>
-              <div class="text-[11px] text-muted-foreground mt-0.5">Terna Engg (Sem 4)</div>
+          <!-- Quick Metrics Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-8">
+            <div class="p-4 rounded-xl glass-panel text-center">
+              <div class="text-2xl font-bold font-heading text-cyan-400">8.12</div>
+              <div class="text-[11px] font-mono text-muted-foreground uppercase">CGPA • B.E. Comp</div>
             </div>
-
-            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
-              <div class="text-xs font-mono text-muted-foreground uppercase">NXTWAVE TRACK</div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-orange-400 font-mono mt-1">180 <span class="text-xs text-orange-300 font-normal">Days</span></div>
-              <div class="text-[11px] text-muted-foreground mt-0.5">Consistency Streak 🔥</div>
+            <div class="p-4 rounded-xl glass-panel text-center">
+              <div class="text-2xl font-bold font-heading text-purple-400">180+</div>
+              <div class="text-[11px] font-mono text-muted-foreground uppercase">Days Dev Streak</div>
             </div>
-
-            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
-              <div class="text-xs font-mono text-muted-foreground uppercase">LEETCODE DSA</div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-teal-400 font-mono mt-1">40+ <span class="text-xs text-teal-300 font-normal">Solved</span></div>
-              <div class="text-[11px] text-muted-foreground mt-0.5">C++ Problem Solving</div>
+            <div class="p-4 rounded-xl glass-panel text-center">
+              <div class="text-2xl font-bold font-heading text-blue-400">40+</div>
+              <div class="text-[11px] font-mono text-muted-foreground uppercase">LeetCode Solved</div>
             </div>
-
-            <div class="card-gradient stagger-card rounded-2xl p-5 border border-border">
-              <div class="text-xs font-mono text-muted-foreground uppercase">CREDENTIALS</div>
-              <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono mt-1">12 <span class="text-xs text-cyan-300 font-normal">Verified</span></div>
-              <div class="text-[11px] text-muted-foreground mt-0.5">Oracle, SIH &amp; AI</div>
+            <div class="p-4 rounded-xl glass-panel text-center">
+              <div class="text-2xl font-bold font-heading text-emerald-400">12+</div>
+              <div class="text-[11px] font-mono text-muted-foreground uppercase">Verified Certs</div>
             </div>
           </div>
 
         </div>
 
-        <!-- Featured Projects Preview on Home -->
-        <div class="max-w-5xl mx-auto pt-8">
-          <div class="flex items-center justify-between mb-8 pb-3 border-b border-border">
-            <div>
-              <h2 class="text-2xl font-bold font-heading">Featured Highlights</h2>
-              <p class="text-sm text-muted-foreground">Hand-picked full-stack and AI workflow projects</p>
+        <!-- "WHAT I DO" SECTION (Moncy-inspired 3-Pillar Capability Architecture) -->
+        <div class="max-w-5xl mx-auto pt-12 pb-16">
+          <div class="text-center mb-10">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-2">ENGINEERING CAPABILITIES</h2>
+            <h3 class="text-3xl font-bold font-heading text-foreground">What I <span class="gradient-text">Do</span></h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Pillar 1 -->
+            <div class="what-i-do-card group">
+              <div class="what-i-do-number">01</div>
+              <div class="p-3 w-fit rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-5">
+                <i data-lucide="layers" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-xl font-bold font-heading text-foreground mb-2 group-hover:text-cyan-400 transition-colors">
+                Full-Stack Architecture
+              </h4>
+              <p class="text-xs text-muted-foreground leading-relaxed mb-4">
+                Engineering production-ready MERN applications, secure JWT authentication, RESTful APIs, and real-time Socket.IO bi-directional communication with cloud database schemas.
+              </p>
+              <div class="flex flex-wrap gap-1">
+                <span class="badge-chip !text-[10px]">React.js</span>
+                <span class="badge-chip !text-[10px]">Node.js</span>
+                <span class="badge-chip !text-[10px]">Express</span>
+                <span class="badge-chip !text-[10px]">MongoDB</span>
+                <span class="badge-chip !text-[10px]">Socket.IO</span>
+              </div>
             </div>
-            <a href="#/projects" class="text-xs font-mono text-primary hover:underline flex items-center gap-1">
-              <span>View All (7)</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+
+            <!-- Pillar 2 -->
+            <div class="what-i-do-card group">
+              <div class="what-i-do-number">02</div>
+              <div class="p-3 w-fit rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 mb-5">
+                <i data-lucide="bot" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-xl font-bold font-heading text-foreground mb-2 group-hover:text-purple-400 transition-colors">
+                Generative AI &amp; RPA
+              </h4>
+              <p class="text-xs text-muted-foreground leading-relaxed mb-4">
+                Designing agentic AI workflows, prompt chains, Google Gemini SDK integrations, and Robotic Process Automation (RPA) for automated message routing and intelligent task execution.
+              </p>
+              <div class="flex flex-wrap gap-1">
+                <span class="badge-chip !text-[10px]">Google GenAI</span>
+                <span class="badge-chip !text-[10px]">RPA</span>
+                <span class="badge-chip !text-[10px]">Agentic AI</span>
+                <span class="badge-chip !text-[10px]">LLM APIs</span>
+                <span class="badge-chip !text-[10px]">MCP</span>
+              </div>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="what-i-do-card group">
+              <div class="what-i-do-number">03</div>
+              <div class="p-3 w-fit rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 mb-5">
+                <i data-lucide="code-2" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-xl font-bold font-heading text-foreground mb-2 group-hover:text-blue-400 transition-colors">
+                Algorithms &amp; DSA
+              </h4>
+              <p class="text-xs text-muted-foreground leading-relaxed mb-4">
+                Solving algorithmic challenges in C++ with Standard Template Library (STL). Practicing time/space complexity optimization across arrays, two pointers, hashing, and trees.
+              </p>
+              <div class="flex flex-wrap gap-1">
+                <span class="badge-chip !text-[10px]">C++ (STL)</span>
+                <span class="badge-chip !text-[10px]">LeetCode</span>
+                <span class="badge-chip !text-[10px]">Arrays &amp; Maps</span>
+                <span class="badge-chip !text-[10px]">Binary Search</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Featured Projects Showcase -->
+        <div class="max-w-5xl mx-auto pt-6 pb-12">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-1">FEATURED WORK</h2>
+              <h3 class="text-2xl sm:text-3xl font-bold font-heading text-foreground">Flagship <span class="gradient-text">Projects</span></h3>
+            </div>
+            <a href="#/projects" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+              <span>View All (7) →</span>
             </a>
           </div>
 
           <div id="home-featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Populated via js/app.js -->
+            <!-- Rendered dynamically -->
           </div>
         </div>
 
@@ -349,6 +425,79 @@
 
         </div>
 
+      
+        <!-- Career & Education Timeline (Moncy-inspired) -->
+        <div class="max-w-4xl mx-auto mt-16 pt-12 border-t border-border">
+          <div class="text-center mb-12">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-2">JOURNEY &amp; MILESTONES</h2>
+            <h3 class="text-3xl font-bold font-heading text-foreground">Education <span class="gradient-text">&amp; Experience</span></h3>
+          </div>
+
+          <div class="career-timeline-container">
+            <div class="career-timeline-line"></div>
+
+            <!-- Timeline Item 1 -->
+            <div class="career-timeline-node">
+              <div class="career-node-dot"></div>
+              <div class="p-6 rounded-2xl glass-panel space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h4 class="text-lg font-bold font-heading text-foreground">B.E. in Computer Engineering</h4>
+                  <span class="badge-chip text-cyan-400 border-cyan-500/30">2023 – 2027 (Expected)</span>
+                </div>
+                <p class="text-xs font-mono text-cyan-400 font-medium">Terna Engineering College, Nerul | University of Mumbai</p>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  Maintaining an academic score of <strong class="text-foreground">8.12 CGPA</strong>. Active Training &amp; Placement Coordinator and technical contributor to college developer hackathons and competitions.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="career-timeline-node">
+              <div class="career-node-dot"></div>
+              <div class="p-6 rounded-2xl glass-panel space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h4 class="text-lg font-bold font-heading text-foreground">Smart India Hackathon (SIH) — KolamSense</h4>
+                  <span class="badge-chip text-purple-400 border-purple-500/30">2025</span>
+                </div>
+                <p class="text-xs font-mono text-purple-400 font-medium">Internal Round Selection • Full-Stack Lead</p>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  Spearheaded the full-stack architecture for KolamSense, connecting computer vision model outputs to an asynchronous responsive web interface.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="career-timeline-node">
+              <div class="career-node-dot"></div>
+              <div class="p-6 rounded-2xl glass-panel space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h4 class="text-lg font-bold font-heading text-foreground">AI Automation &amp; Agentic Workflows</h4>
+                  <span class="badge-chip text-blue-400 border-blue-500/30">2024 – Present</span>
+                </div>
+                <p class="text-xs font-mono text-blue-400 font-medium">Robotic Process Automation (RPA) &amp; Generative AI</p>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  Engineered context-aware automated response workflows across social platforms using Google Gemini APIs and RPA bots, reducing response turnaround times by over 80%.
+                </p>
+              </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="career-timeline-node">
+              <div class="career-node-dot"></div>
+              <div class="p-6 rounded-2xl glass-panel space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h4 class="text-lg font-bold font-heading text-foreground">180-Day Continuous Dev Streak Milestone</h4>
+                  <span class="badge-chip text-amber-400 border-amber-500/30">Continuous Consistency</span>
+                </div>
+                <p class="text-xs font-mono text-amber-400 font-medium">Full-Stack Web Development &amp; Algorithmic DSA</p>
+                <p class="text-xs text-muted-foreground leading-relaxed">
+                  Maintained an unbroken 180-day streak of daily software engineering, building production-grade MERN applications like ShopNest and SocialHub AI.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
 
@@ -364,7 +513,62 @@
           <p class="section-subtitle">Technologies, frameworks, databases, and AI tooling I use to build robust software.</p>
         </div>
 
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Dual Infinite Tech Marquee (Moncy-inspired) -->
+        <div class="max-w-5xl mx-auto my-12 space-y-4">
+          <div class="text-center mb-6">
+            <h3 class="text-xs font-mono uppercase tracking-widest text-cyan-400">ECOSYSTEM &amp; TECH STACK</h3>
+          </div>
+
+          <!-- Track 1 (Left scroll) -->
+          <div class="tech-marquee-wrapper">
+            <div class="tech-marquee-track">
+              <div class="marquee-pill"><span class="text-cyan-400 font-bold">⚡</span> React.js</div>
+              <div class="marquee-pill"><span class="text-emerald-400 font-bold">🟢</span> Node.js</div>
+              <div class="marquee-pill"><span class="text-slate-300 font-bold">🚂</span> Express.js</div>
+              <div class="marquee-pill"><span class="text-green-500 font-bold">🍃</span> MongoDB</div>
+              <div class="marquee-pill"><span class="text-purple-400 font-bold">⚛️</span> Redux Toolkit</div>
+              <div class="marquee-pill"><span class="text-sky-400 font-bold">🎨</span> Tailwind CSS</div>
+              <div class="marquee-pill"><span class="text-blue-500 font-bold">⚙️</span> C++ (STL)</div>
+              <div class="marquee-pill"><span class="text-yellow-400 font-bold">🐍</span> Python</div>
+              <!-- Duplicate for seamless infinite loop -->
+              <div class="marquee-pill"><span class="text-cyan-400 font-bold">⚡</span> React.js</div>
+              <div class="marquee-pill"><span class="text-emerald-400 font-bold">🟢</span> Node.js</div>
+              <div class="marquee-pill"><span class="text-slate-300 font-bold">🚂</span> Express.js</div>
+              <div class="marquee-pill"><span class="text-green-500 font-bold">🍃</span> MongoDB</div>
+              <div class="marquee-pill"><span class="text-purple-400 font-bold">⚛️</span> Redux Toolkit</div>
+              <div class="marquee-pill"><span class="text-sky-400 font-bold">🎨</span> Tailwind CSS</div>
+              <div class="marquee-pill"><span class="text-blue-500 font-bold">⚙️</span> C++ (STL)</div>
+              <div class="marquee-pill"><span class="text-yellow-400 font-bold">🐍</span> Python</div>
+            </div>
+          </div>
+
+          <!-- Track 2 (Right scroll) -->
+          <div class="tech-marquee-wrapper">
+            <div class="tech-marquee-track reverse">
+              <div class="marquee-pill"><span class="text-indigo-400 font-bold">📡</span> Socket.IO</div>
+              <div class="marquee-pill"><span class="text-blue-400 font-bold">💳</span> Razorpay Gateway</div>
+              <div class="marquee-pill"><span class="text-cyan-300 font-bold">☁️</span> Cloudinary CDN</div>
+              <div class="marquee-pill"><span class="text-purple-400 font-bold">✨</span> Google Gemini API</div>
+              <div class="marquee-pill"><span class="text-amber-400 font-bold">🤖</span> Robotic Process Automation</div>
+              <div class="marquee-pill"><span class="text-emerald-400 font-bold">🌐</span> REST APIs</div>
+              <div class="marquee-pill"><span class="text-red-400 font-bold">🔐</span> JWT Authentication</div>
+              <div class="marquee-pill"><span class="text-orange-400 font-bold">📦</span> Git &amp; GitHub</div>
+              <!-- Duplicate for seamless infinite loop -->
+              <div class="marquee-pill"><span class="text-indigo-400 font-bold">📡</span> Socket.IO</div>
+              <div class="marquee-pill"><span class="text-blue-400 font-bold">💳</span> Razorpay Gateway</div>
+              <div class="marquee-pill"><span class="text-cyan-300 font-bold">☁️</span> Cloudinary CDN</div>
+              <div class="marquee-pill"><span class="text-purple-400 font-bold">✨</span> Google Gemini API</div>
+              <div class="marquee-pill"><span class="text-amber-400 font-bold">🤖</span> Robotic Process Automation</div>
+              <div class="marquee-pill"><span class="text-emerald-400 font-bold">🌐</span> REST APIs</div>
+              <div class="marquee-pill"><span class="text-red-400 font-bold">🔐</span> JWT Authentication</div>
+              <div class="marquee-pill"><span class="text-orange-400 font-bold">📦</span> Git &amp; GitHub</div>
+            </div>
+          </div>
+
+        </div>
+
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           
           <!-- Category 1: Languages -->
           <div class="card-gradient stagger-card rounded-2xl p-6 border border-border space-y-4">
