@@ -116,14 +116,14 @@ export const certificates: CertificateItem[] = [
   },
   {
     id: "cert-anthropic-claude",
-    title: "Anthropic Claude with Amazon Bedrock",
+    title: "Claude Code in Action",
     category: "ai",
-    issuer: "Anthropic / AWS Bedrock",
-    badge: "Anthropic / AWS",
+    issuer: "Anthropic",
+    badge: "Anthropic Verified",
     fileType: "pdf",
-    localFile: "assets/certificates/Anthropic_Claude_with_Amazon_Bedrock_Certificate.pdf",
-    description: "Building production LLM architectures using Claude on AWS Bedrock foundation infrastructure.",
-    skills: ["Anthropic Claude", "AWS Bedrock", "LLM APIs", "Cloud AI"],
+    localFile: "certificates/Anthropic.pdf",
+    description: "Official certification from Anthropic verifying practical mastery of Claude Code, agentic software engineering workflows, and advanced LLM tool use.",
+    skills: ["Claude Code", "Anthropic Claude", "Agentic Coding", "LLM Workflows"],
     image: "/images/cert_anthropic.webp"
   },
   {
